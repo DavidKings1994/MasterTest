@@ -1,0 +1,24 @@
+{
+  "name": "mastermodules",
+  "version": "1.0.0",
+  "description": "demo page",
+  "main": "index.js",
+  "dependencies": {
+    "backbone": "~1.3.3",
+    "jquery": "~3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidKings1994/MasterTest.git"
+  },
+  "author": "David Reyes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavidKings1994/MasterTest/issues"
+  },
+  "homepage": "https://github.com/DavidKings1994/MasterTest#readme"
+}

@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "restricted area"
+AuthUserFile C:/xampp/htdocs/MasterTest/.htpasswd
+require valid-user
