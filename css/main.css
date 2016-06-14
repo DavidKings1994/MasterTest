@@ -1,0 +1,77 @@
+body {
+    margin: 0;
+}
+
+@font-face {
+    font-family: OpenSans-Bold;
+    src: url(fonts/open-sans/OpenSans-Bold.ttf);
+}
+
+.mainTitle {
+    display: block;
+    position: absolute;
+    font-family: OpenSans-Bold;
+    left: 50%;
+    top: 50%;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+@media only screen and (orientation: portrait) {
+    .mainTitle {
+        font-size: 54px;
+        width: 80%;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    .mainTitle {
+        font-size: 60px;
+        width: 90%;
+    }
+}
+
+@media only screen and (orientation: portrait) and (min-height: 700px) {
+    .mainTitle {
+        font-size: 61px;
+        width: 90%;
+    }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 900px) {
+    .mainTitle {
+        font-size: 60px;
+        width: 95%;
+    }
+}
+
+#mainImage {
+    width: auto;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+#mainBoard {
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+#mainBody {
+    width: 100vw;
+    height: 100vh;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: absolute;
+    top: 100vh;
+    background-color: blue;
+}
