@@ -44,10 +44,14 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1), __webpack_require__(2)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, upperBar) {
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1), __webpack_require__(2), __webpack_require__(5)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, upperBar, downButton) {
 		$(document).ready(function() {
-			var bar = new upperBar("texto");
-			$("#upperBar").append(bar);
+			var bar = new upperBar({text : "texto"});
+			bar.render();
+			$("#upperBar").append(bar.$el);
+			var downbutton = new downButton();
+			downbutton.render();
+			$(downbutton.$el).insertBefore("#mainBoard");
 		});
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -10125,7 +10129,7 @@
 	                    "height": "100%"
 	                }
 	            });
-	            this.$el.append(textoBoton);
+	            this.$el.append(text);
 	        }
 	    });
 	    return upperBar;
@@ -13611,6 +13615,37 @@
 	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 	  }
 	}.call(this));
+
+
+/***/ },
+/* 5 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone) {
+	    var downButton = Backbone.View.extend({
+	        tagname: "div",
+	        className: "downButton",
+	        initialize: function() {
+
+	        },
+	        events: {
+		   	   'click' : 'goDown'
+		   	},
+		   	goDown: function (event){
+	            $('html, body').animate({
+	                scrollTop: $("#mainImage").height() - $("#mainImage").scrollTop() 
+	            }, 'slow');
+		   	},
+	        render: function() {
+	            var text = $("<p />", {
+	                class: "buttonText",
+	                text: "v"
+	            });
+	            this.$el.append(text);
+	        }
+	    });
+	    return downButton;
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
 
 
 /***/ }

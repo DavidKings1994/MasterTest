@@ -24,7 +24,7 @@ define(['jquery','Backbone'], function($, Backbone) {
                     "height": "100%"
                 }
             });
-            this.$el.append(textoBoton);
+            this.$el.append(text);
         }
     });
     return upperBar;
