@@ -6,17 +6,17 @@ define(['jquery','Backbone'], function($, Backbone) {
 
         },
         events: {
-	   	   'click' : 'goDown'
+	   	   'click' : 'goDown',
 	   	},
 	   	goDown: function (event){
             $('html, body').animate({
-                scrollTop: $("#mainImage").height() - $("#mainImage").scrollTop() 
+                scrollTop: $("#mainImage").height() - $("#mainImage").scrollTop()
             }, 'slow');
 	   	},
         render: function() {
-            var text = $("<p />", {
-                class: "buttonText",
-                text: "v"
+            var text = $("<img />", {
+                class: "buttonIcon",
+                src: "http://www.freeiconspng.com/uploads/arrow-down-icon-png-9.png"
             });
             this.$el.append(text);
         }

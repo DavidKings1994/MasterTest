@@ -5,6 +5,13 @@ define(['jquery', "./../views/upperBar/upperBar", "./../views/downButton/downBut
 		$("#upperBar").append(bar.$el);
 		var downbutton = new downButton();
 		downbutton.render();
-		$(downbutton.$el).insertBefore("#mainBoard");
+		$("#mainBoardFront").append(downbutton.$el);
+		$("#mainImage").animate({
+			opacity: 1
+		}, 1500);
+		$(".mainTitlePortrait, .mainTitleLandscape").animate({
+			opacity: 1,
+			top: "50%"
+		}, 1000);
 	});
 });

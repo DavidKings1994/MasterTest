@@ -51,7 +51,14 @@
 			$("#upperBar").append(bar.$el);
 			var downbutton = new downButton();
 			downbutton.render();
-			$(downbutton.$el).insertBefore("#mainBoard");
+			$("#mainBoardFront").append(downbutton.$el);
+			$("#mainImage").animate({
+				opacity: 1
+			}, 1500);
+			$(".mainTitlePortrait, .mainTitleLandscape").animate({
+				opacity: 1,
+				top: "50%"
+			}, 1000);
 		});
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -13629,17 +13636,17 @@
 
 	        },
 	        events: {
-		   	   'click' : 'goDown'
+		   	   'click' : 'goDown',
 		   	},
 		   	goDown: function (event){
 	            $('html, body').animate({
-	                scrollTop: $("#mainImage").height() - $("#mainImage").scrollTop() 
+	                scrollTop: $("#mainImage").height() - $("#mainImage").scrollTop()
 	            }, 'slow');
 		   	},
 	        render: function() {
-	            var text = $("<p />", {
-	                class: "buttonText",
-	                text: "v"
+	            var text = $("<img />", {
+	                class: "buttonIcon",
+	                src: "http://www.freeiconspng.com/uploads/arrow-down-icon-png-9.png"
 	            });
 	            this.$el.append(text);
 	        }
