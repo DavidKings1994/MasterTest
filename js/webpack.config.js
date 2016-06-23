@@ -12,6 +12,7 @@ module.exports = {
             'jquery': __dirname + '/../node_modules/jquery/dist/jquery.js',
             'Backbone': __dirname + '/../node_modules/backbone/backbone.js',
             'underscore': __dirname + '/../node_modules/underscore/underscore.js',
+            'bootstrap': __dirname + '/../node_modules/bootstrap/dist/js/bootstrap.js',
         }
     },
     module: {

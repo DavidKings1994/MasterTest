@@ -2,11 +2,29 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
+    font-size: 14px;
+    font-family: OpenSans-Light !important;
+    line-height: 1.8 !important;
+
+}
+
+.whiteBackground {
+    background: white;
 }
 
 @font-face {
     font-family: OpenSans-Bold;
     src: url(fonts/open-sans/OpenSans-Bold.ttf);
+}
+
+@font-face {
+    font-family: OpenSans-Semibold;
+    src: url(fonts/open-sans/OpenSans-Semibold.ttf);
+}
+
+@font-face {
+    font-family: OpenSans-Light;
+    src: url(fonts/open-sans/OpenSans-Light.ttf);
 }
 
 .mainTitlePortrait, .mainTitleLandscape {
@@ -26,17 +44,29 @@ body {
         font-size: 54px;
         width: 90%;
     }
+
+    .content {
+        font-size: 50px;
+    }
 }
 
 @media only screen and (orientation: landscape) {
     .mainTitleLandscape {
         font-size: 60px;
     }
+
+    .content {
+        font-size: 30px;
+    }
 }
 
 @media only screen and (orientation: portrait) and (min-height: 700px) {
     .mainTitlePortrait {
         font-size: 61px;
+    }
+
+    .content {
+        font-size: 30px;
     }
 }
 
@@ -45,6 +75,10 @@ body {
         font-size: 42px;
         width: 62%;
     }
+
+    .content {
+        font-size: 17px;
+    }
 }
 
 @media only screen and (orientation: landscape) and (min-width: 1200px) {
@@ -52,6 +86,33 @@ body {
         font-size: 42px;
         width: auto;
     }
+
+    .content {
+        font-size: 16px;
+    }
+}
+
+.title {
+    font-size: 60px;
+    font-family: OpenSans-Semibold;
+    color: #0099e6;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 30px;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    padding-bottom: 50px;
+    margin-bottom: 70px;
+}
+
+.subtitle {
+    font-size: 30px;
+    color: #0099e6;
+}
+
+.fullBoard {
+    height: 100vh;
 }
 
 #mainImage {
@@ -81,10 +142,20 @@ body {
 
 #mainBody {
     width: 100%;
-    height: 200vh;
-    padding-top: 30px;
-    padding-bottom: 30px;
     position: absolute;
     top: 100vh;
-    background-color: blue;
+    background-color: rgb(245, 245, 245);
+}
+
+#mainBody #profile .profileImage {
+    height: 200px;
+    width: 200px;
+    border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+    margin: 0 auto;
+    display: block;
 }
