@@ -95,24 +95,25 @@ body {
 .title {
     font-size: 60px;
     font-family: OpenSans-Semibold;
-    color: #0099e6;
+    color: #22A39F;
     display: block;
     margin: 0 auto;
     text-align: center;
     padding-top: 30px;
     border-bottom: 1px;
     border-bottom-style: solid;
+    border-color: rgb(220, 220, 220);
     padding-bottom: 50px;
     margin-bottom: 70px;
 }
 
 .subtitle {
     font-size: 30px;
-    color: #0099e6;
+    color: #22A39F;
 }
 
 .fullBoard {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 #mainImage {

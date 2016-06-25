@@ -44,11 +44,12 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1), __webpack_require__(2), __webpack_require__(5)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, upperBar, downButton) {
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1), __webpack_require__(2), __webpack_require__(5), __webpack_require__(6)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, upperBar, downButton, experiences) {
 		$(document).ready(function() {
-			var bar = new upperBar({text : "texto"});
-			bar.render();
-			$("#upperBar").append(bar.$el);
+			var eduContent = new experiences();
+			eduContent.render();
+			$("#experiencesContent").append(eduContent.education);
+			$("#careersContent").append(eduContent.career);
 			var downbutton = new downButton();
 			downbutton.render();
 			$("#mainBoardFront").append(downbutton.$el);
@@ -13652,6 +13653,119 @@
 	        }
 	    });
 	    return downButton;
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(7)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, experiencesRow) {
+	    var expiriences = Backbone.View.extend({
+	        tagname: "div",
+	        initialize: function() {
+	            this.info = [
+	                [
+	                    "UANL",
+	                    "Aug 2011 - Today",
+	                    "Bachelor - Multimedia and Digital Animation",
+	                    "The education was mainly C++ programming, but I also learned about SQL, PHP, MVC, OOP and more."
+	                ],
+	                [
+	                    "UANL Highschool #7",
+	                    "Aug 2009 - Jul 2011",
+	                    "Highschool",
+	                    "I graduated highschool, where I realized in my second year of school that I wanted to do something with programming"
+	                ]
+	            ];
+	            this.info2 = [
+	                [
+	                    "Milenio",
+	                    "Feb 2016 - May 2016",
+	                    "Internship - Web Developer",
+	                    "I did my first internship at Milenio group. There I learned to apply my knowledge of PHP and javascript and also learned new stuff like synfony, backbonejs, nodejs and how to work in team using github"
+	                ]
+	            ];
+	        },
+	        render: function() {
+	            this.education = $("<div />");
+	            this.career = $("<div />");
+	            for (var i = 0; i < this.info.length; i++) {
+	                var row = new experiencesRow({place: this.info[i][0], time: this.info[i][1], degree: this.info[i][2], desc: this.info[i][3]});
+	                row.render();
+	                this.education.append(row.$el);
+	            }
+	            for (var i = 0; i < this.info2.length; i++) {
+	                var row = new experiencesRow({place: this.info2[i][0], time: this.info2[i][1], degree: this.info2[i][2], desc: this.info2[i][3]});
+	                row.render();
+	                this.career.append(row.$el);
+	            }
+	        }
+	    });
+	    return expiriences;
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone) {
+	    var expiriencesRow = Backbone.View.extend({
+	        tagname: "div",
+	        initialize: function(options) {
+	            this.place = options.place;
+	            this.time = options.time;
+	            this.degree = options.degree;
+	            this.desc = options.desc;
+	        },
+	        render: function() {
+	            var place = $("<p />", {
+	                class: "content",
+	                text: this.place,
+	                css: {
+	                    "font-weight": "bold"
+	                }
+	            });
+	            var time = $("<p />", {
+	                class: "content",
+	                text: this.time
+	            });
+	            var degree = $("<p />", {
+	                class: "content",
+	                text: this.degree,
+	                css: {
+	                    "font-weight": "bold"
+	                }
+	            });
+	            var desc = $("<p />", {
+	                class: "content",
+	                text: this.desc
+	            });
+
+	            var leftCell = $("<div />", {
+	                class: "col-md-4",
+	            });
+	            var rightCell = $("<div />", {
+	                class: "col-md-8",
+	            });
+	            var row = $("<div />", {
+	                class: "row",
+	                css: {
+	                    "margin-bottom": "30px"
+	                }
+	            });
+
+	            leftCell.append(place);
+	            leftCell.append(time);
+	            rightCell.append(degree);
+	            rightCell.append(desc);
+	            row.append(leftCell);
+	            row.append(rightCell);
+	            this.$el.append(row);
+	        }
+	    });
+	    return expiriencesRow;
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
 
 

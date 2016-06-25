@@ -1,8 +1,9 @@
-define(['jquery', "./../views/upperBar/upperBar", "./../views/downButton/downButton"],  function($, upperBar, downButton) {
+define(['jquery', "./../views/upperBar/upperBar", "./../views/downButton/downButton", "./../views/experiences/experiences"],  function($, upperBar, downButton, experiences) {
 	$(document).ready(function() {
-		var bar = new upperBar({text : "texto"});
-		bar.render();
-		$("#upperBar").append(bar.$el);
+		var eduContent = new experiences();
+		eduContent.render();
+		$("#experiencesContent").append(eduContent.education);
+		$("#careersContent").append(eduContent.career);
 		var downbutton = new downButton();
 		downbutton.render();
 		$("#mainBoardFront").append(downbutton.$el);
