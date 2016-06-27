@@ -44,15 +44,48 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1), __webpack_require__(2), __webpack_require__(5), __webpack_require__(6)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, upperBar, downButton, experiences) {
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1), __webpack_require__(2), __webpack_require__(5), __webpack_require__(6), __webpack_require__(8)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, upperBar, downButton, experiences, skills) {
 		$(document).ready(function() {
+			window.twttr = (function(d, s, id) {
+				var js, fjs = d.getElementsByTagName(s)[0],
+				t = window.twttr || {};
+				if (d.getElementById(id)) return t;
+				js = d.createElement(s);
+				js.id = id;
+				js.src = "https://platform.twitter.com/widgets.js";
+				fjs.parentNode.insertBefore(js, fjs);
+
+				t._e = [];
+				t.ready = function(f) {
+					t._e.push(f);
+				};
+
+				return t;
+			}(document, "script", "twitter-wjs"));
+
+			(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.6&appId=747075528746735";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+
 			var eduContent = new experiences();
 			eduContent.render();
 			$("#experiencesContent").append(eduContent.education);
 			$("#careersContent").append(eduContent.career);
+
 			var downbutton = new downButton();
 			downbutton.render();
 			$("#mainBoardFront").append(downbutton.$el);
+
+			var habilitiesContent = new skills();
+			habilitiesContent.render();
+			$("#skillsContent").append(habilitiesContent.skills);
+			$("#languagesContent").append(habilitiesContent.languages);
+			$("#toolsContent").append(habilitiesContent.tools);
+
 			$("#mainImage").animate({
 				opacity: 1
 			}, 1500);
@@ -13766,6 +13799,175 @@
 	        }
 	    });
 	    return expiriencesRow;
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(9)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, skillRow) {
+	    var expiriences = Backbone.View.extend({
+	        tagname: "div",
+	        initialize: function() {
+	            this.info = [
+	                ["C++",5],
+	                ["C#",5],
+	                ["Java",5],
+	                ["HTML",5],
+	                ["CSS",5],
+	                ["Bootstrap",5],
+	                ["Javascript",5],
+	                ["Jquery",5],
+	                ["MVC Pattern",5],
+	                ["Object Oriented Programming",5],
+	                ["Singleton Pattern",5],
+	                ["Backbone",4],
+	                ["SQL",4],
+	                ["MySQL",4],
+	                ["AngularJS",4],
+	                ["PHP",3],
+	                ["Synfony",3],
+	                ["ElasticSearch",2],
+	            ];
+	            this.info2 = [
+	                ["Spanish (mother tongue)",5],
+	                ["English",5],
+	            ];
+	            this.info3 = [
+	                ["Nodejs",5],
+	                ["Webpack",5],
+	                ["Git",5],
+	                ["Subversion",5],
+	                ["Atom",5],
+	                ["Sublime Text",5],
+	                ["Windows",5],
+	                ["MS Office",5],
+	                ["Visual Studio",5],
+	                ["SQL Server 2008 R2",5],
+	                ["MySQL Workbench 6.0",5],
+	                ["Netbeans",5],
+	                ["Eclipse",4],
+	                ["Mac",4],
+	                ["FileZilla",3],
+	                ["Adobe Photoshop",2],
+	            ];
+	        },
+	        render: function() {
+	            this.skills = $("<div />", {
+	                class: "row"
+	            });
+	            this.languages = $("<div />", {
+	                class: "row"
+	            });
+	            this.tools = $("<div />", {
+	                class: "row"
+	            });
+	            for (var i = 0; i < this.info.length; i++) {
+	                var row = new skillRow({desc: this.info[i][0], amount: this.info[i][1]});
+	                row.render();
+	                this.skills.append(row.$el);
+	            }
+	            for (var i = 0; i < this.info2.length; i++) {
+	                var row = new skillRow({desc: this.info2[i][0], amount: this.info2[i][1]});
+	                row.render();
+	                this.languages.append(row.$el);
+	            }
+	            for (var i = 0; i < this.info3.length; i++) {
+	                var row = new skillRow({desc: this.info3[i][0], amount: this.info3[i][1]});
+	                row.render();
+	                this.tools.append(row.$el);
+	            }
+	        }
+	    });
+	    return expiriences;
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone) {
+	    var skillsRow = Backbone.View.extend({
+	        tagname: "div",
+	        className: "col-md-6 col-sm-12 col-xm-12",
+	        initialize: function(options) {
+	            this.desc = options.desc;
+	            this.amount = options.amount;
+	        },
+	        events: {
+		   	   'mouseover' : 'hover',
+	           'mouseleave' : 'exit',
+		   	},
+		   	hover: function (event){
+	            $(this.$el.find(".starsContainer")).stop().animate({
+	                letterSpacing: "6px"
+	            }, 'fast');
+	            this.$el.css("background", "rgb(245, 245, 245)");
+		   	},
+	        exit: function (event){
+	            $(this.$el.find(".starsContainer")).stop().animate({
+	                letterSpacing: "3px"
+	            }, 'fast');
+	            this.$el.css("background", "transparent");
+		   	},
+	        render: function() {
+	            var desc = $("<p />", {
+	                class: "content",
+	                text: this.desc,
+	            });
+	            var amount = $("<p />", {
+	                class: "starsContainer",
+	                css: {
+	                    "text-align": "right",
+	                    "font-size": "16px",
+	                    "letter-spacing": "3px"
+	                }
+	            });
+	            var leftCell = $("<div />", {
+	                class: "col-md-8 col-sm-8 col-xm-8",
+	            });
+	            var rightCell = $("<div />", {
+	                class: "col-md-4 col-sm-4 col-xm-4",
+	                css: {
+	                    "padding-top": "6px"
+	                }
+	            });
+
+	            var temp = 0;
+	            for (var i = 0; i < 5; i++) {
+	                if (temp < this.amount) {
+	                    var star = $("<span />", {
+	                        class: "glyphicon glyphicon-star",
+	                        css: {
+	                            "color": "#22A39F",
+	                        }
+	                    });
+	                } else {
+	                    var star = $("<span />", {
+	                        class: "glyphicon glyphicon-star",
+	                        css: {
+	                            "color": "rgb(140,140,140)",
+	                        }
+	                    });
+	                }
+	                temp++;
+	                amount.append(star);
+	            }
+
+	            var row = $("<div />", {
+	                class: "row"
+	            });
+
+	            leftCell.append(desc);
+	            rightCell.append(amount);
+	            row.append(leftCell);
+	            row.append(rightCell);
+	            this.$el.append(row);
+	        }
+	    });
+	    return skillsRow;
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
 
 

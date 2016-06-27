@@ -5,11 +5,18 @@ body {
     font-size: 14px;
     font-family: OpenSans-Light !important;
     line-height: 1.8 !important;
+}
 
+p {
+    margin: 0 !important;
 }
 
 .whiteBackground {
     background: white;
+}
+
+.darkBackground {
+    background: rgb(50, 50, 50);
 }
 
 @font-face {
@@ -25,6 +32,11 @@ body {
 @font-face {
     font-family: OpenSans-Light;
     src: url(fonts/open-sans/OpenSans-Light.ttf);
+}
+
+@font-face {
+    font-family: genericons-regular-webfont;
+    src: url(fonts/generic-icons/genericons-regular-webfont.ttf);
 }
 
 .mainTitlePortrait, .mainTitleLandscape {
@@ -94,7 +106,6 @@ body {
 
 .title {
     font-size: 60px;
-    font-family: OpenSans-Semibold;
     color: #22A39F;
     display: block;
     margin: 0 auto;
@@ -104,7 +115,7 @@ body {
     border-bottom-style: solid;
     border-color: rgb(220, 220, 220);
     padding-bottom: 50px;
-    margin-bottom: 70px;
+    margin-bottom: 70px !important;
 }
 
 .subtitle {
@@ -116,13 +127,62 @@ body {
     min-height: 100vh;
 }
 
-#mainImage {
+.socialIcon {
+    height: 45px;
     width: auto;
+}
+
+#skillsContent, #languagesContent, #toolsContent {
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-color: rgb(220, 220, 220);
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+#toolsContent {
+    border-style: none;
+}
+
+#careersContent, #about {
+    margin-bottom: 90px;
+}
+
+#contact a {
+    display: inline-block;
+    margin-left: 15px;
+    text-decoration: none;
+    color: rgb(140,140,140);
+    font-size: 18px;
+}
+
+#contact a:hover {
+    color: white;
+}
+
+#contactContent {
+    padding-bottom: 70px;
+    border-bottom-style: solid;
+    border-bottom-color: rgb(80,80,80);
+    border-bottom-width: 1px;
+}
+
+.darkBackground .title {
+    color: #FFFFFF;
+    border-bottom-color: rgb(80,80,80);
+    border-bottom-width: 1px;
+}
+
+#mainImage {
+    width: 100%;
     height: 100%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
+    -webkit-filter: hue-rotate(-15deg);
+    filter: hue-rotate(-15deg);
 }
 
 #mainBoardFront {
@@ -134,7 +194,6 @@ body {
 #mainBoard {
     width: 100%;
     height: 100vh;
-    background-position: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -159,4 +218,15 @@ body {
 	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
     margin: 0 auto;
     display: block;
+}
+
+.socialShare {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.socialButton {
+    width: 32%;
+    text-align: center;
+    display: inline-block;
 }

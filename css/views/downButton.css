@@ -21,7 +21,7 @@ div.downButton .buttonIcon {
 div.downButton {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;;
+    position: absolute;
     left: 0;
     bottom: 0;
 }
@@ -56,4 +56,10 @@ div.downButton {
         width: 10%;
         left: 85%;
     }
+
+    div.downButton .buttonIcon {
+        height: 70%;
+        transform: translateY(-50%);
+    }
+
 }

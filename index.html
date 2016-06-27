@@ -5,13 +5,16 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/views/downButton.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="img/views/logo.png" />`
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
+    <div id="fb-root"></div>
     <div id="mainBoardFront">
         <p class="mainTitlePortrait mainTitleLandscape">David Reyes - Web Developer</p>
     </div>
     <div id="mainBoard">
-        <img  id="mainImage" src="http://tcp-assets.s3.amazonaws.com/content-images/article/iron-man-blueprints-6392/AvTow_Stark_IronLegion_03-wm.jpg"></img>
+        <img  id="mainImage" src="https://lh3.googleusercontent.com/axvBHyxpLv1K3oGQIPuRqs-nI8TKWCvVSBjqPWfckWuBKIXJIzBqvo_EzGTVneIYPRA=h900">
     </div>
     <div id="mainBody" class="container-fluid">
         <div class="row whiteBackground fullBoard">
@@ -66,21 +69,32 @@
             <div class="row whiteBackground">
                 <div id="habilities" class="col-md-8 col-md-offset-2">
                     <p class="title mainTitle">Habilities</p>
-                    <div class="row">
+                    <div id="skills" class="row">
+                        <div class="col-md-6">
+                            <p class="subtitle">Skills</p>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div id="languages" class="col-md-8 col-md-offset-2">
-                    <p class="title mainTitle">Languages</p>
-                    <div class="row">
+                    <div id="skillsContent">
                     </div>
-                </div>
-            </div>
-            <div class="row whiteBackground">
-                <div id="tools" class="col-md-8 col-md-offset-2">
-                    <p class="title mainTitle">Tools</p>
-                    <div class="row">
+                    <div id="languages" class="row">
+                        <div class="col-md-6">
+                            <p class="subtitle">Languages</p>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
+                    <div id="languagesContent">
+                    </div>
+                    <div id="tools" class="row">
+                        <div class="col-md-6">
+                            <p class="subtitle">Tools</p>
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
+                    <div id="toolsContent">
                     </div>
                 </div>
             </div>
@@ -91,10 +105,29 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row fullBoard darkBackground">
                 <div id="contact" class="col-md-8 col-md-offset-2">
                     <p class="title mainTitle">Contact</p>
-                    <div class="row">
+                    <div id="contactContent">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img src="img/views/emailbutton.png" class="socialIcon">
+                                <a href="mailto:david.reyes.1994@hotmail.com" target="_top">david.reyes.1994@hotmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row socialShare">
+                        <div class="col-md-6 col-md-offset-3">
+                            <div class="socialButton">
+                                <a class="twitter-share-button" href="https://twitter.com/intent/tweet"></a>
+                            </div>
+                            <div class="socialButton">
+                                <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+                            </div>
+                            <div class="socialButton">
+                                <div class="g-plusone" data-size="medium"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
