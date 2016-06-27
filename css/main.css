@@ -230,3 +230,12 @@ p {
     text-align: center;
     display: inline-block;
 }
+
+#contactContent .socicon {
+    vertical-align: middle;
+    font-size: 25px;
+}
+
+#contactContent a span:last-child {
+    margin-left: 15px;
+}
