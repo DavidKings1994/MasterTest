@@ -44,7 +44,13 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1), __webpack_require__(2), __webpack_require__(5), __webpack_require__(6), __webpack_require__(8)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, upperBar, downButton, experiences, skills) {
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [
+		__webpack_require__(1),
+		__webpack_require__(2),
+		__webpack_require__(5),
+		__webpack_require__(7),
+		__webpack_require__(9)
+	], __WEBPACK_AMD_DEFINE_RESULT__ = function($, downButton, experiences, skills, navbar) {
 		$(document).ready(function() {
 			window.twttr = (function(d, s, id) {
 				var js, fjs = d.getElementsByTagName(s)[0],
@@ -63,12 +69,28 @@
 				return t;
 			}(document, "script", "twitter-wjs"));
 
-			(function(d, s, id) {
-			  var js, fjs = d.getElementsByTagName(s)[0];
-			  if (d.getElementById(id)) return;
-			  js = d.createElement(s); js.id = id;
-			  js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.6&appId=747075528746735";
-			  fjs.parentNode.insertBefore(js, fjs);
+			// (function(d, s, id) {
+			//   var js, fjs = d.getElementsByTagName(s)[0];
+			//   if (d.getElementById(id)) return;
+			//   js = d.createElement(s); js.id = id;
+			//   js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.6&appId=747075528746735";
+			//   fjs.parentNode.insertBefore(js, fjs);
+			// }(document, 'script', 'facebook-jssdk'));
+
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId      : '205154059880871',
+					xfbml      : true,
+					version    : 'v2.6'
+				});
+			};
+
+			(function(d, s, id){
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) {return;}
+				js = d.createElement(s); js.id = id;
+				js.src = "//connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
 
 			var eduContent = new experiences();
@@ -79,6 +101,10 @@
 			var downbutton = new downButton();
 			downbutton.render();
 			$("#mainBoardFront").append(downbutton.$el);
+
+			var navigation = new navbar();
+			navigation.render();
+			$("body").append(navigation.$el);
 
 			var habilitiesContent = new skills();
 			habilitiesContent.render();
@@ -10145,35 +10171,29 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone) {
-	    var upperBar = Backbone.View.extend({
+	    var downButton = Backbone.View.extend({
 	        tagname: "div",
-	        className: "upperBar",
-	        initialize: function(options) {
-	            this.text = options.text;
+	        className: "downButton",
+	        initialize: function() {
+
 	        },
 	        events: {
-		   	   'click' : 'descargar'
+		   	   'click' : 'goDown',
 		   	},
-		   	descargar: function (event){
-	            console.log("click");
+		   	goDown: function (event){
+	            $('html, body').animate({
+	                scrollTop: $("#mainImage").height() - $("#mainImage").scrollTop()
+	            }, 'slow');
 		   	},
 	        render: function() {
-	            var text = $("<p />", {
-	                class: "generalText",
-	                text: this.text,
-	                css: {
-	                    "display": "inline-block",
-	                    "margin": "auto",
-	                    "text-align": "center",
-	                    "vertical-align": "middle",
-	                    "width": "100%",
-	                    "height": "100%"
-	                }
+	            var text = $("<img />", {
+	                class: "buttonIcon",
+	                src: "http://www.freeiconspng.com/uploads/arrow-down-icon-png-9.png"
 	            });
 	            this.$el.append(text);
 	        }
 	    });
-	    return upperBar;
+	    return downButton;
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
 
 
@@ -13662,38 +13682,7 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone) {
-	    var downButton = Backbone.View.extend({
-	        tagname: "div",
-	        className: "downButton",
-	        initialize: function() {
-
-	        },
-	        events: {
-		   	   'click' : 'goDown',
-		   	},
-		   	goDown: function (event){
-	            $('html, body').animate({
-	                scrollTop: $("#mainImage").height() - $("#mainImage").scrollTop()
-	            }, 'slow');
-		   	},
-	        render: function() {
-	            var text = $("<img />", {
-	                class: "buttonIcon",
-	                src: "http://www.freeiconspng.com/uploads/arrow-down-icon-png-9.png"
-	            });
-	            this.$el.append(text);
-	        }
-	    });
-	    return downButton;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
-
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(7)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, experiencesRow) {
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(6)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, experiencesRow) {
 	    var expiriences = Backbone.View.extend({
 	        tagname: "div",
 	        initialize: function() {
@@ -13740,7 +13729,7 @@
 
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone) {
@@ -13803,10 +13792,10 @@
 
 
 /***/ },
-/* 8 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(9)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, skillRow) {
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(8)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, skillRow) {
 	    var expiriences = Backbone.View.extend({
 	        tagname: "div",
 	        initialize: function() {
@@ -13885,7 +13874,7 @@
 
 
 /***/ },
-/* 9 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone) {
@@ -13968,6 +13957,74 @@
 	        }
 	    });
 	    return skillsRow;
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+
+
+/***/ },
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone) {
+	    var navbar = Backbone.View.extend({
+	        tagname: "div",
+	        className: "navigationbar",
+	        initialize: function() {
+	            var self = this;
+	            $(window).bind('scroll', function (ev) {
+	                self.loadMore(ev);
+	            });
+	            this.info = [
+	                ["profile"],
+	                ["experiences"],
+	                ["habilities"],
+	                ["projects"],
+	                ["contact"]
+	            ];
+	        },
+	        loadMore: function () {
+	            var scroll = $('body').scrollTop();
+	            if(scroll >= ($("#mainImage").height() - ($("#mainImage").height()/100)*5)) {
+	                $(".navigationbar").addClass('fixed');
+	                $("#mainBody .section").each(function(i){
+	                    if(scroll >= $(this).offset().top) {
+	                        if(!$(".navigationbar .button").eq(i).hasClass('selected')) {
+	                            $(".navigationbar .button.selected").removeClass("selected");
+	                            $(".navigationbar .button").eq(i).addClass('selected');
+	                        }
+	                    }
+	                });
+	            }
+	            else {
+	                $(".navigationbar").removeClass('fixed');
+	                $('.navigationbar a .button.selected').removeClass('selected');
+	                $('.navigationbar a .button:first').addClass('selected');
+	            }
+	        },
+	        render: function() {
+	            for (var i = 0; i < this.info.length; i++) {
+	                var button = $("<div />", {
+	                    class: "button",
+	                    id: "button"+i
+	                });
+	                var anchor = $("<a />", {
+	                    href: "#"+this.info[i]
+	                });
+	                var self = this;
+	                anchor.click(function(){
+	                    $('html, body').animate({
+	                        scrollTop: $( $(this).attr('href') ).offset().top
+	                    }, 500);
+	                });
+	                var buttonText = $("<p />", {
+	                    text: this.info[i],
+	                });
+	                button.append(buttonText);
+	                anchor.append(button);
+	                this.$el.append(anchor);
+	            }
+	        }
+	    });
+	    return navbar;
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
 
 

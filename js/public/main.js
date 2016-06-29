@@ -1,4 +1,10 @@
-define(['jquery', "./../views/upperBar/upperBar", "./../views/downButton/downButton", "./../views/experiences/experiences", "./../views/habilities/skills"],  function($, upperBar, downButton, experiences, skills) {
+define([
+	'jquery',
+	"./../views/downButton/downButton",
+	"./../views/experiences/experiences",
+	"./../views/habilities/skills",
+	"./../views/navbar/navbar"
+],  function($, downButton, experiences, skills, navbar) {
 	$(document).ready(function() {
 		window.twttr = (function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0],
@@ -17,12 +23,28 @@ define(['jquery', "./../views/upperBar/upperBar", "./../views/downButton/downBut
 			return t;
 		}(document, "script", "twitter-wjs"));
 
-		(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.6&appId=747075528746735";
-		  fjs.parentNode.insertBefore(js, fjs);
+		// (function(d, s, id) {
+		//   var js, fjs = d.getElementsByTagName(s)[0];
+		//   if (d.getElementById(id)) return;
+		//   js = d.createElement(s); js.id = id;
+		//   js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.6&appId=747075528746735";
+		//   fjs.parentNode.insertBefore(js, fjs);
+		// }(document, 'script', 'facebook-jssdk'));
+
+		window.fbAsyncInit = function() {
+			FB.init({
+				appId      : '205154059880871',
+				xfbml      : true,
+				version    : 'v2.6'
+			});
+		};
+
+		(function(d, s, id){
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) {return;}
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js";
+			fjs.parentNode.insertBefore(js, fjs);
 		}(document, 'script', 'facebook-jssdk'));
 
 		var eduContent = new experiences();
@@ -33,6 +55,10 @@ define(['jquery', "./../views/upperBar/upperBar", "./../views/downButton/downBut
 		var downbutton = new downButton();
 		downbutton.render();
 		$("#mainBoardFront").append(downbutton.$el);
+
+		var navigation = new navbar();
+		navigation.render();
+		$("body").append(navigation.$el);
 
 		var habilitiesContent = new skills();
 		habilitiesContent.render();
