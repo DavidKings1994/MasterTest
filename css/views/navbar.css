@@ -1,0 +1,42 @@
+.navigationbar {
+    position: absolute;
+    top: 100vh;
+    width: 135px;
+    height: 500px;
+    right: 5%;
+    z-index: 2;
+    background-color: #434242;
+    font-family: OpenSans-Semibold;
+    font-size: 16px;
+}
+
+.navigationbar.fixed {
+    position: fixed;
+    top: 5vh;
+}
+
+.navigationbar .button {
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    color: #FFFFFF;
+}
+
+.navigationbar .button:hover {
+    color: rgb(140,140,140);
+}
+
+.navigationbar a:hover {
+    text-decoration: none;
+}
+
+.navigationbar .button p {
+    transform: translateY(150%);
+    text-transform: capitalize;
+    display: block;
+}
+
+.navigationbar .selected {
+    background: #22A39F;
+}

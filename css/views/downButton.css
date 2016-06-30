@@ -52,7 +52,7 @@ div.downButton {
 
 @media only screen and (orientation: landscape) and (min-width: 1200px) {
     div.downButton {
-        height: 100px;
+        height: 130px;
         width: 10%;
         left: 85%;
     }

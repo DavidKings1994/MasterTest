@@ -1,4 +1,4 @@
-define(['jquery','Backbone'], function($, Backbone) {
+define(['jquery','Backbone', 'underscore'], function($, Backbone, _) {
     var navbar = Backbone.View.extend({
         tagname: "div",
         className: "navigationbar",
@@ -14,6 +14,19 @@ define(['jquery','Backbone'], function($, Backbone) {
                 ["projects"],
                 ["contact"]
             ];
+            $.ajax({
+                url:"./php/languages.php",
+                type:"POST",
+                dataType:"text",
+                async : false,
+                data: {
+                    lang: "es"
+                },
+                success:function(msg){
+                    self.section = $.parseJSON(msg);
+                    self.section = _.toArray(self.section['SECTIONS']);
+                }
+            });
         },
         loadMore: function () {
             var scroll = $('body').scrollTop();
@@ -50,7 +63,7 @@ define(['jquery','Backbone'], function($, Backbone) {
                     }, 500);
                 });
                 var buttonText = $("<p />", {
-                    text: this.info[i],
+                    text: this.section[i],
                 });
                 button.append(buttonText);
                 anchor.append(button);

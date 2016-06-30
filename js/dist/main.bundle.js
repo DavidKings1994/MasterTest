@@ -69,14 +69,6 @@
 				return t;
 			}(document, "script", "twitter-wjs"));
 
-			// (function(d, s, id) {
-			//   var js, fjs = d.getElementsByTagName(s)[0];
-			//   if (d.getElementById(id)) return;
-			//   js = d.createElement(s); js.id = id;
-			//   js.src = "//connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v2.6&appId=747075528746735";
-			//   fjs.parentNode.insertBefore(js, fjs);
-			// }(document, 'script', 'facebook-jssdk'));
-
 			window.fbAsyncInit = function() {
 				FB.init({
 					appId      : '205154059880871',
@@ -13682,43 +13674,45 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(6)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, experiencesRow) {
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(4), __webpack_require__(6)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, _, experiencesRow) {
 	    var expiriences = Backbone.View.extend({
 	        tagname: "div",
 	        initialize: function() {
-	            this.info = [
-	                [
-	                    "UANL",
-	                    "Aug 2011 - Today",
-	                    "Bachelor - Multimedia and Digital Animation",
-	                    "The education was mainly C++ programming, but I also learned about SQL, PHP, MVC, OOP and more."
-	                ],
-	                [
-	                    "UANL Highschool #7",
-	                    "Aug 2009 - Jul 2011",
-	                    "Highschool",
-	                    "I graduated highschool, where I realized in my second year of school that I wanted to do something with programming"
-	                ]
-	            ];
-	            this.info2 = [
-	                [
-	                    "Milenio",
-	                    "Feb 2016 - May 2016",
-	                    "Internship - Web Developer",
-	                    "I did my first internship at Milenio group. There I learned to apply my knowledge of PHP and javascript and also learned new stuff like synfony, backbonejs, nodejs and how to work in team using github"
-	                ]
-	            ];
+	            var self = this;
+	            $.ajax({
+	                url:"./php/languages.php",
+	                type:"POST",
+	                dataType: "text",
+	                async : false,
+	                data: {
+	                    lang: "es"
+	                },
+	                success:function(msg){
+	                    self.info = _.toArray($.parseJSON(msg)['EXPERIENCE_EDUCATIONS_CONTENT']);
+	                    self.info2 = _.toArray($.parseJSON(msg)['EXPERIENCE_CAREERS_CONTENT']);
+	                }
+	            });
 	        },
 	        render: function() {
 	            this.education = $("<div />");
 	            this.career = $("<div />");
-	            for (var i = 0; i < this.info.length; i++) {
-	                var row = new experiencesRow({place: this.info[i][0], time: this.info[i][1], degree: this.info[i][2], desc: this.info[i][3]});
+	            for (var i = 0; i < _.size(this.info); i++) {
+	                var row = new experiencesRow({
+	                    place: this.info[i]['PLACE'],
+	                    time: this.info[i]['TIME'],
+	                    degree: this.info[i]['DEGREE'],
+	                    desc: this.info[i]['DESC']
+	                });
 	                row.render();
 	                this.education.append(row.$el);
 	            }
-	            for (var i = 0; i < this.info2.length; i++) {
-	                var row = new experiencesRow({place: this.info2[i][0], time: this.info2[i][1], degree: this.info2[i][2], desc: this.info2[i][3]});
+	            for (var i = 0; i < _.size(this.info2); i++) {
+	                var row = new experiencesRow({
+	                    place: this.info2[i]['PLACE'],
+	                    time: this.info2[i]['TIME'],
+	                    degree: this.info2[i]['DEGREE'],
+	                    desc: this.info2[i]['DESC']
+	                });
 	                row.render();
 	                this.career.append(row.$el);
 	            }
@@ -13964,7 +13958,7 @@
 /* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone) {
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(4)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, _) {
 	    var navbar = Backbone.View.extend({
 	        tagname: "div",
 	        className: "navigationbar",
@@ -13980,6 +13974,19 @@
 	                ["projects"],
 	                ["contact"]
 	            ];
+	            $.ajax({
+	                url:"./php/languages.php",
+	                type:"POST",
+	                dataType:"text",
+	                async : false,
+	                data: {
+	                    lang: "es"
+	                },
+	                success:function(msg){
+	                    self.section = $.parseJSON(msg);
+	                    self.section = _.toArray(self.section['SECTIONS']);
+	                }
+	            });
 	        },
 	        loadMore: function () {
 	            var scroll = $('body').scrollTop();
@@ -14016,7 +14023,7 @@
 	                    }, 500);
 	                });
 	                var buttonText = $("<p />", {
-	                    text: this.info[i],
+	                    text: this.section[i],
 	                });
 	                button.append(buttonText);
 	                anchor.append(button);

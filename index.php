@@ -1,10 +1,43 @@
-<html>
+<?php
+session_start();
+header('Cache-control: private');
+
+if(isSet($_GET['lang'])) {
+    $lang = $_GET['lang'];
+    $_SESSION['lang'] = $lang;
+    setcookie('lang', $lang, time() + (3600 * 24 * 30));
+} else if(isSet($_SESSION['lang'])) {
+    $lang = $_SESSION['lang'];
+} else if(isSet($_COOKIE['lang'])) {
+    $lang = $_COOKIE['lang'];
+} else {
+    $lang = 'en';
+}
+
+switch ($lang) {
+    case 'en':
+    $lang_file = 'lang.en.php';
+    break;
+
+    case 'es':
+    $lang_file = 'lang.es.php';
+    break;
+
+    default:
+    $lang_file = 'lang.en.php';
+}
+include 'php/languages/'.$lang_file;
+?>
+
+<html lang="en">
 <head>
-    <title>David Reyes - Presentación</title>
+    <title><?= $lang['PAGE_TITLE']; ?></title>
+    <meta charset="UTF-8">
     <script type="text/javascript" src="js/dist/main.bundle.js" charset="utf-8"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/views/downButton.css">
+    <link rel="stylesheet" type="text/css" href="css/views/navbar.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="img/views/logo.png" />`
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -12,32 +45,39 @@
 <body>
     <div id="fb-root"></div>
     <div id="mainBoardFront">
-        <p class="mainTitlePortrait mainTitleLandscape">David Reyes - Web Developer</p>
+        <p class="mainTitlePortrait mainTitleLandscape"><?= $lang['HEADER_TITLE'] ?></p>
+        <div id="languageIcons">
+            <a href="www.davidreyes.tk?lang=es" lang="es" hreflang="es">
+                <img src="img/views/icon_flag_mx.png" class="languageIcon">
+            </a>
+            <a href="www.davidreyes.tk?lang=en" lang="en" hreflang="en">
+                <img src="img/views/icon_flag_us.png" class="languageIcon">
+            </a>
+        </div>
     </div>
     <div id="mainBoard">
         <img  id="mainImage" src="https://lh3.googleusercontent.com/axvBHyxpLv1K3oGQIPuRqs-nI8TKWCvVSBjqPWfckWuBKIXJIzBqvo_EzGTVneIYPRA=h900">
     </div>
     <div id="mainBody" class="container-fluid">
         <div class="row whiteBackground fullBoard">
-            <div id="profile" class="col-md-8 col-md-offset-2">
-                <p class="title">Profile</p>
+            <div id="profile" class="col-md-8 col-md-offset-2 section">
+                <p class="title"><?= $lang['SECTIONS']['SECTION_PROFILE'] ?></p>
                 <div class="row">
                     <div id="about" class="col-md-4">
-                        <p class="subtitle">About</p>
-                        <p class="content">I'm a developer, student from the UANL in mexico. I've been working on
-                            many projects for internet and desktop in areas like video games, web and data bases</p>
+                        <p class="subtitle"><?= $lang['PROFILE_ABOUT'] ?></p>
+                        <p class="content"><?= $lang['PROFILE_ABOUT_CONTENT'] ?></p>
                         </div>
                         <div class="col-md-4">
                             <img src="./img/views/me.jpg" class="profileImage">
                         </div>
                         <div id="details" class="col-md-4">
-                            <p class="subtitle">Details</p>
+                            <p class="subtitle"><?= $lang['PROFILE_DETAILS'] ?></p>
                             <p class="content">
-                                <b>Name:</b><br>
+                                <b><?= $lang['PROFILE_NAME'] ?></b><br>
                                 David Reyes<br>
-                                <b>Age:</b><br>
-                                22 years<br>
-                                <b>Location:</b><br>
+                                <b><?= $lang['PROFILE_AGE'] ?></b><br>
+                                <?= $lang['PROFILE_AGE_CONTENT'] ?><br>
+                                <b><?= $lang['PROFILE_LOCATION'] ?></b><br>
                                 Monterrey, Nuevo Leon, Mexico<br>
                             </p>
                         </div>
@@ -45,11 +85,11 @@
                 </div>
             </div>
             <div class="row">
-                <div id="experiences" class="col-md-8 col-md-offset-2">
-                    <p class="title mainTitle">Experiences</p>
+                <div id="experiences" class="col-md-8 col-md-offset-2 section">
+                    <p class="title mainTitle"><?= $lang['SECTIONS']['SECTION_EXPERIENCE'] ?></p>
                     <div id="education" class="row">
                         <div class="col-md-4">
-                            <p class="subtitle">Educations</p>
+                            <p class="subtitle"><?= $lang['EXPERIENCE_EDUCATIONS'] ?></p>
                         </div>
                         <div class="col-md-8">
                         </div>
@@ -58,7 +98,7 @@
                     </div>
                     <div id="careers" class="row">
                         <div class="col-md-4">
-                            <p class="subtitle">Careers</p>
+                            <p class="subtitle"><?= $lang['EXPERIENCE_CAREERS'] ?></p>
                         </div>
                         <div class="col-md-8">
                         </div>
@@ -68,11 +108,11 @@
                 </div>
             </div>
             <div class="row whiteBackground">
-                <div id="habilities" class="col-md-8 col-md-offset-2">
-                    <p class="title mainTitle">Habilities</p>
+                <div id="habilities" class="col-md-8 col-md-offset-2 section">
+                    <p class="title mainTitle"><?= $lang['SECTIONS']['SECTION_ABILITIES'] ?></p>
                     <div id="skills" class="row">
                         <div class="col-md-6">
-                            <p class="subtitle">Skills</p>
+                            <p class="subtitle"><?= $lang['ABILITIES_SKILLS'] ?></p>
                         </div>
                         <div class="col-md-6">
                         </div>
@@ -81,7 +121,7 @@
                     </div>
                     <div id="languages" class="row">
                         <div class="col-md-6">
-                            <p class="subtitle">Languages</p>
+                            <p class="subtitle"><?= $lang['ABILITIES_LANGUAGES'] ?></p>
                         </div>
                         <div class="col-md-6">
                         </div>
@@ -90,7 +130,7 @@
                     </div>
                     <div id="tools" class="row">
                         <div class="col-md-6">
-                            <p class="subtitle">Tools</p>
+                            <p class="subtitle"><?= $lang['ABILITIES_TOOLS'] ?></p>
                         </div>
                         <div class="col-md-6">
                         </div>
@@ -100,21 +140,21 @@
                 </div>
             </div>
             <div class="row">
-                <div id="proyects" class="col-md-8 col-md-offset-2">
-                    <p class="title mainTitle">Projects</p>
+                <div id="projects" class="col-md-8 col-md-offset-2 section">
+                    <p class="title mainTitle"><?= $lang['SECTIONS']['SECTION_PROJECTS'] ?></p>
                     <div class="row">
                     </div>
                 </div>
             </div>
             <div class="row fullBoard darkBackground">
-                <div id="contact" class="col-md-8 col-md-offset-2">
-                    <p class="title mainTitle">Contact</p>
+                <div id="contact" class="col-md-8 col-md-offset-2 section">
+                    <p class="title mainTitle"><?= $lang['SECTIONS']['SECTION_CONTACT'] ?></p>
                     <div id="contactContent">
                         <div class="row">
                             <div class="col-md-6">
-                                <a href="mailto:david.reyes.1994@hotmail.com" target="_top" class="socicon-button">
+                                <a href="mailto:contact@davidreyes.tk" target="_top" class="socicon-button">
                                     <span class="socicon socicon-mail"></span>
-                                    <span>david.reyes.1994@hotmail.com</span>
+                                    <span>contact@davidreyes.tk</span>
                                 </a>
                             </div>
                             <div class="col-md-6">
@@ -131,7 +171,7 @@
                                 <a class="twitter-share-button" href="https://twitter.com/intent/tweet"></a>
                             </div>
                             <div class="socialButton">
-                                <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-action="like" data-show-faces="false" data-share="false"></div>
+                                <div class="fb-like" data-layout="button" data-show-faces="true" data-share="false"></div>
                             </div>
                             <div class="socialButton">
                                 <div class="g-plusone" data-size="medium"></div>
