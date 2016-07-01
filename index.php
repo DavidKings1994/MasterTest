@@ -49,10 +49,10 @@ include 'php/languages/'.$lang_file;
     <div id="mainBoardFront">
         <p class="mainTitlePortrait mainTitleLandscape"><?= $lang['HEADER_TITLE'] ?></p>
         <div id="languageIcons">
-            <a href="www.davidreyes.tk?lang=es" lang="es" hreflang="es">
+            <a href="?lang=es" lang="es" hreflang="es">
                 <img src="img/views/icon_flag_mx.png" class="languageIcon">
             </a>
-            <a href="www.davidreyes.tk?lang=en" lang="en" hreflang="en">
+            <a href="?lang=en" lang="en" hreflang="en">
                 <img src="img/views/icon_flag_us.png" class="languageIcon">
             </a>
         </div>
