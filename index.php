@@ -58,7 +58,7 @@ include 'php/languages/'.$lang_file;
         </div>
     </div>
     <div id="mainBoard">
-        <img  id="mainImage" src="https://lh3.googleusercontent.com/axvBHyxpLv1K3oGQIPuRqs-nI8TKWCvVSBjqPWfckWuBKIXJIzBqvo_EzGTVneIYPRA=h900">
+        <img  id="mainImage" src="img/views/mainbackground.jpg">
     </div>
     <div id="mainBody" class="container-fluid">
         <div class="row whiteBackground fullBoard">

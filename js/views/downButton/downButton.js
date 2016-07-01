@@ -16,7 +16,7 @@ define(['jquery','Backbone'], function($, Backbone) {
         render: function() {
             var text = $("<img />", {
                 class: "buttonIcon",
-                src: "http://www.freeiconspng.com/uploads/arrow-down-icon-png-9.png"
+                src: "./img/views/scroll-down.png"
             });
             this.$el.append(text);
         }
