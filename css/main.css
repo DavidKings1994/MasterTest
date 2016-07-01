@@ -51,61 +51,7 @@ p {
     opacity: 0;
 }
 
-@media only screen and (orientation: portrait) {
-    .mainTitlePortrait {
-        font-size: 54px;
-        width: 90%;
-    }
-
-    .content {
-        font-size: 50px;
-    }
-}
-
-@media only screen and (orientation: landscape) {
-    .mainTitleLandscape {
-        font-size: 60px;
-    }
-
-    .content {
-        font-size: 30px;
-    }
-}
-
-@media only screen and (orientation: portrait) and (min-height: 700px) {
-    .mainTitlePortrait {
-        font-size: 61px;
-    }
-
-    .content {
-        font-size: 30px;
-    }
-}
-
-@media only screen and (orientation: landscape) and (min-width: 900px) {
-    .mainTitleLandscape {
-        font-size: 42px;
-        width: 62%;
-    }
-
-    .content {
-        font-size: 17px;
-    }
-}
-
-@media only screen and (orientation: landscape) and (min-width: 1200px) {
-    .mainTitleLandscape {
-        font-size: 42px;
-        width: auto;
-    }
-
-    .content {
-        font-size: 16px;
-    }
-}
-
 .title {
-    font-size: 60px;
     color: #22A39F;
     display: block;
     margin: 0 auto;
@@ -145,8 +91,12 @@ p {
     border-style: none;
 }
 
-#careersContent, #about {
+#careersContent, #profile .row > div {
     margin-bottom: 90px;
+}
+
+#contactContent .row > div {
+    margin-bottom: 10px;
 }
 
 #contact a {
@@ -188,7 +138,6 @@ p {
 #mainBoardFront {
     width: 100%;
     height: 100vh;
-    position: relative;
 }
 
 #mainBoard {
@@ -244,12 +193,203 @@ p {
     width: 100px;
     height: 50px;
     position: absolute;
-    top: 0;
-    right: 10px;
+    top: 5px;
+    right: 5px;
 }
 
 #languageIcons .languageIcon{
     height: 25px;
     width: 40px;
     margin-right: 8px
+}
+
+#projects a {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+#projects .projectsContent {
+    padding-bottom: 90px;
+}
+
+.linkButton {
+    margin: 0 auto;
+    width: 230px;
+    padding: 5px 10px;
+    background-color: #22A39F;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #1c8784;
+    border-radius: 5%;
+}
+
+.linkButton:hover {
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+
+.projectsContent p {
+    text-align: center;
+}
+
+@media only screen and (orientation: portrait) {
+    html:lang(en) .mainTitlePortrait {
+        font-size: 19px;
+        width: 86%;
+    }
+
+    html:lang(es) .mainTitlePortrait {
+        font-size: 17px;
+        width: 87%;
+    }
+
+    .title {
+        font-size: 50px;
+    }
+
+    .content {
+        font-size: 20px;
+    }
+
+    #contact a {
+        font-size: 14px;
+    }
+
+    #habilities .content {
+        font-size: 13px;
+    }
+
+    #profile .content, #profile .subtitle {
+        text-align: center;
+    }
+
+    .starsContainer {
+        position: relative;
+        top: -25px;
+        font-size: 16px;
+    }
+}
+
+@media only screen and (orientation: landscape) {
+    html:lang(en) .mainTitlePortrait {
+        font-size: 16px;
+    }
+
+    html:lang(es) .mainTitlePortrait {
+        font-size: 14px;
+    }
+
+    .title {
+        font-size: 50px;
+    }
+
+    .content {
+        font-size: 30px;
+    }
+
+    #profile .content, #profile .subtitle {
+        text-align: center;
+    }
+
+    #habilities .content {
+        font-size: 13px;
+    }
+
+    .starsContainer {
+        position: relative;
+        top: -25px;
+        font-size: 16px;
+    }
+}
+
+@media only screen and (orientation: portrait) and (min-height: 700px) {
+    html:lang(es) .mainTitlePortrait {
+        font-size: 41px;
+        width: 90%;
+    }
+
+    html:lang(en) .mainTitlePortrait {
+        font-size: 48px;
+        width: 90%;
+    }
+
+    .content {
+        font-size: 30px;
+    }
+
+    #profile .content, #profile .subtitle {
+        text-align: center;
+    }
+
+    #habilities .content {
+        font-size: 20px;
+    }
+
+    .starsContainer {
+        position: inherit;
+        font-size: 16px;
+    }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 900px) {
+    html:lang(en) .mainTitlePortrait {
+        font-size: 42px;
+        width: 62%;
+    }
+
+    html:lang(es) .mainTitlePortrait {
+        font-size: 39px;
+        width: 62%;
+    }
+
+    .content {
+        font-size: 17px;
+    }
+
+    #profile .content, #profile .subtitle {
+        text-align: left;
+    }
+
+    #habilities .content {
+        font-size: 13px;
+    }
+
+    .starsContainer {
+        position: inherit;
+        top: 0;
+        font-size: 10px;
+    }
+}
+
+@media only screen and (orientation: landscape) and (min-width: 1200px) {
+    html:lang(en) .mainTitleLandscape {
+        font-size: 42px;
+        width: auto;
+    }
+
+    html:lang(es) .mainTitleLandscape {
+        font-size: 42px;
+        width: 51%;
+    }
+
+    .title {
+        font-size: 60px;
+    }
+
+    .content {
+        font-size: 16px;
+    }
+
+    #profile .content, #profile .subtitle {
+        text-align: left;
+    }
+
+    #habilities .content {
+        font-size: 20px;
+    }
+
+    .starsContainer {
+        position: inherit;
+        font-size: 16px;
+    }
 }

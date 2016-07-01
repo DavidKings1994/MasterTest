@@ -31,15 +31,14 @@ define(['jquery','Backbone'], function($, Backbone) {
                 class: "starsContainer",
                 css: {
                     "text-align": "right",
-                    "font-size": "16px",
                     "letter-spacing": "3px"
                 }
             });
             var leftCell = $("<div />", {
-                class: "col-md-8 col-sm-8 col-xm-8",
+                class: "col-md-8 col-sm-6 col-xm-6",
             });
             var rightCell = $("<div />", {
-                class: "col-md-4 col-sm-4 col-xm-4",
+                class: "col-md-4 col-sm-6 col-xm-6",
                 css: {
                     "padding-top": "6px"
                 }

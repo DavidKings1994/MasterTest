@@ -9,7 +9,7 @@ define(['jquery','Backbone', 'underscore', './experiencesRow'], function($, Back
                 dataType: "text",
                 async : false,
                 data: {
-                    lang: "es"
+                    lang: $('html').attr('lang')
                 },
                 success:function(msg){
                     self.info = _.toArray($.parseJSON(msg)['EXPERIENCE_EDUCATIONS_CONTENT']);

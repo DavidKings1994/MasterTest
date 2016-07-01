@@ -9,6 +9,9 @@ $lang = array();
 
 $lang['PAGE_TITLE'] = 'David Reyes - Perfil';
 $lang['HEADER_TITLE'] = 'David Reyes - Desarrollador Web';
+$lang['SITE_DESCRIPTION'] = "Hola, soy un desarrollador web";
+$lang['GITHUB_PROYECT'] = "Ver este proyecto en Github";
+$lang['LANGUAGE'] = 'es';
 
 // Sections
 
@@ -53,4 +56,7 @@ $lang['EXPERIENCE_CAREERS_CONTENT']['MILENIO']['DESC'] = 'Hice mis primeras prac
 $lang['ABILITIES_SKILLS'] = 'Habilidades';
 $lang['ABILITIES_LANGUAGES'] = 'Idiomas';
 $lang['ABILITIES_TOOLS'] = 'Herramientas';
+
+$lang['PROJECTS_MESSAGE'] = "mas proyectos en el futuro!";
+
 ?>

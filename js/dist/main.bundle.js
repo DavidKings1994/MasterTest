@@ -111,6 +111,8 @@
 				opacity: 1,
 				top: "50%"
 			}, 1000);
+
+			$(window).scroll();
 		});
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -13685,7 +13687,7 @@
 	                dataType: "text",
 	                async : false,
 	                data: {
-	                    lang: "es"
+	                    lang: $('html').attr('lang')
 	                },
 	                success:function(msg){
 	                    self.info = _.toArray($.parseJSON(msg)['EXPERIENCE_EDUCATIONS_CONTENT']);
@@ -13904,15 +13906,14 @@
 	                class: "starsContainer",
 	                css: {
 	                    "text-align": "right",
-	                    "font-size": "16px",
 	                    "letter-spacing": "3px"
 	                }
 	            });
 	            var leftCell = $("<div />", {
-	                class: "col-md-8 col-sm-8 col-xm-8",
+	                class: "col-md-8 col-sm-6 col-xm-6",
 	            });
 	            var rightCell = $("<div />", {
-	                class: "col-md-4 col-sm-4 col-xm-4",
+	                class: "col-md-4 col-sm-6 col-xm-6",
 	                css: {
 	                    "padding-top": "6px"
 	                }
@@ -13961,7 +13962,7 @@
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(4)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, _) {
 	    var navbar = Backbone.View.extend({
 	        tagname: "div",
-	        className: "navigationbar",
+	        className: "navigationbarContainer",
 	        initialize: function() {
 	            var self = this;
 	            $(window).bind('scroll', function (ev) {
@@ -13980,7 +13981,7 @@
 	                dataType:"text",
 	                async : false,
 	                data: {
-	                    lang: "es"
+	                    lang: $('html').attr('lang')
 	                },
 	                success:function(msg){
 	                    self.section = $.parseJSON(msg);
@@ -13988,26 +13989,42 @@
 	                }
 	            });
 	        },
+	        toggle: function () {
+	            if($(".navigationbar").css("height") != "40px") {
+	                $(".navigationbar").stop().animate({
+	                    height: "40px"
+	                }, 'fast');
+	            } else {
+	                $(".navigationbar").stop().animate({
+	                    height: "60vmax"
+	                }, 'fast');
+	            }
+	        },
 	        loadMore: function () {
 	            var scroll = $('body').scrollTop();
 	            if(scroll >= ($("#mainImage").height() - ($("#mainImage").height()/100)*5)) {
-	                $(".navigationbar").addClass('fixed');
+	                $(".navigationbarContainer").addClass('fixed');
+	                $("#hamburger").addClass('fixed');
 	                $("#mainBody .section").each(function(i){
-	                    if(scroll >= $(this).offset().top) {
-	                        if(!$(".navigationbar .button").eq(i).hasClass('selected')) {
-	                            $(".navigationbar .button.selected").removeClass("selected");
-	                            $(".navigationbar .button").eq(i).addClass('selected');
+	                    if(scroll >= $(this).offset().top && scroll <= $(this).offset().top + $(this).outerHeight(true)) {
+	                        if($(".navigationbarContainer .button").eq(i).hasClass("selected") == false) {
+	                            $(".navigationbarContainer .button.selected").removeClass("selected");
+	                            $(".navigationbarContainer .button").eq(i).addClass("selected");
 	                        }
 	                    }
 	                });
 	            }
 	            else {
-	                $(".navigationbar").removeClass('fixed');
-	                $('.navigationbar a .button.selected').removeClass('selected');
-	                $('.navigationbar a .button:first').addClass('selected');
+	                $(".navigationbarContainer").removeClass('fixed');
+	                $("#hamburger").removeClass('fixed');
+	                $('.navigationbarContainer a .button.selected').removeClass('selected');
+	                $('.navigationbarContainer a .button:first').addClass('selected');
 	            }
 	        },
 	        render: function() {
+	            var navigation = $("<div />", {
+	                class: "navigationbar"
+	            });
 	            for (var i = 0; i < this.info.length; i++) {
 	                var button = $("<div />", {
 	                    class: "button",
@@ -14017,18 +14034,39 @@
 	                    href: "#"+this.info[i]
 	                });
 	                var self = this;
-	                anchor.click(function(){
+	                anchor.click(function(event){
+	                    event.preventDefault();
+	                    var href = $.attr(this, 'href');
 	                    $('html, body').animate({
 	                        scrollTop: $( $(this).attr('href') ).offset().top
-	                    }, 500);
+	                    }, 500, function () {
+	                        window.location.hash = href;
+	                    });
+	                    if($("#hamburger").css("display") != "none") {
+	                        $(".navigationbar").stop().animate({
+	                            height: "40px"
+	                        }, 'fast');
+	                    }
 	                });
 	                var buttonText = $("<p />", {
 	                    text: this.section[i],
 	                });
 	                button.append(buttonText);
 	                anchor.append(button);
-	                this.$el.append(anchor);
+	                navigation.append(anchor);
 	            }
+
+	            var mobileMenu = $("<div />", {
+	                class: "glyphicon glyphicon-menu-hamburger",
+	                id: "hamburger"
+	            });
+	            var self = this;
+	            mobileMenu.click(function(){
+	                self.toggle();
+	            });
+
+	            this.$el.append(navigation);
+	            this.$el.append(mobileMenu);
 	        }
 	    });
 	    return navbar;

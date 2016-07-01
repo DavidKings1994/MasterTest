@@ -65,5 +65,7 @@ define([
 			opacity: 1,
 			top: "50%"
 		}, 1000);
+
+		$(window).scroll();
 	});
 });

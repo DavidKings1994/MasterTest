@@ -1,6 +1,6 @@
 @keyframes updown {
-    0%   {top:40%;}
-    100% {top:50%;}
+    0%   {top:45%;}
+    100% {top:55%;}
 }
 
 div.downButton .buttonIcon {
@@ -10,7 +10,7 @@ div.downButton .buttonIcon {
     height: 90%;
     position: relative;
     top: 50%;
-    transform: translateY(-45%);
+    transform: translateY(-50%);
     animation-name: updown;
     animation-duration: 0.6s;
     animation-iteration-count: infinite;
@@ -28,19 +28,19 @@ div.downButton {
 
 @media only screen and (orientation: portrait) {
     div.downButton {
-        height: 200px;
+        height: 90px;
     }
 }
 
 @media only screen and (orientation: landscape) {
     div.downButton {
-        height: 200px;
+        height: 50px;
     }
 }
 
 @media only screen and (orientation: portrait) and (min-height: 700px) {
     div.downButton {
-        height: 200px;
+        height: 100px;
     }
 }
 
@@ -52,7 +52,7 @@ div.downButton {
 
 @media only screen and (orientation: landscape) and (min-width: 1200px) {
     div.downButton {
-        height: 130px;
+        height: 100px;
         width: 10%;
         left: 85%;
     }
