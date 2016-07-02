@@ -52,6 +52,34 @@
 		__webpack_require__(9)
 	], __WEBPACK_AMD_DEFINE_RESULT__ = function($, downButton, experiences, skills, navbar) {
 		$(document).ready(function() {
+			$("#mainImage").stop().delay(1000).animate({
+				opacity: 1
+			}, "slow");
+			$(".mainTitlePortrait, .mainTitleLandscape").stop().delay(1200).animate({
+				opacity: 1,
+				top: "50%"
+			}, "slow");
+
+			var downbutton = new downButton();
+			downbutton.render();
+			$("#mainBoardFront").append(downbutton.$el);
+
+			var navigation = new navbar();
+			navigation.render();
+			$("body").append(navigation.$el);
+			$(window).scroll();
+
+			var eduContent = new experiences();
+			eduContent.render();
+			$("#experiencesContent").append(eduContent.education);
+			$("#careersContent").append(eduContent.career);
+
+			var habilitiesContent = new skills();
+			habilitiesContent.render();
+			$("#skillsContent").append(habilitiesContent.skills);
+			$("#languagesContent").append(habilitiesContent.languages);
+			$("#toolsContent").append(habilitiesContent.tools);
+
 			window.twttr = (function(d, s, id) {
 				var js, fjs = d.getElementsByTagName(s)[0],
 				t = window.twttr || {};
@@ -84,35 +112,6 @@
 				js.src = "//connect.facebook.net/en_US/sdk.js";
 				fjs.parentNode.insertBefore(js, fjs);
 			}(document, 'script', 'facebook-jssdk'));
-
-			var eduContent = new experiences();
-			eduContent.render();
-			$("#experiencesContent").append(eduContent.education);
-			$("#careersContent").append(eduContent.career);
-
-			var downbutton = new downButton();
-			downbutton.render();
-			$("#mainBoardFront").append(downbutton.$el);
-
-			var navigation = new navbar();
-			navigation.render();
-			$("body").append(navigation.$el);
-
-			var habilitiesContent = new skills();
-			habilitiesContent.render();
-			$("#skillsContent").append(habilitiesContent.skills);
-			$("#languagesContent").append(habilitiesContent.languages);
-			$("#toolsContent").append(habilitiesContent.tools);
-
-			$("#mainImage").animate({
-				opacity: 1
-			}, 1500);
-			$(".mainTitlePortrait, .mainTitleLandscape").animate({
-				opacity: 1,
-				top: "50%"
-			}, 1000);
-
-			$(window).scroll();
 		});
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -10175,8 +10174,9 @@
 		   	   'click' : 'goDown',
 		   	},
 		   	goDown: function (event){
+	            var mainImage = $("#mainImage");
 	            $('html, body').animate({
-	                scrollTop: $("#mainImage").height() - $("#mainImage").scrollTop()
+	                scrollTop: mainImage.height() - mainImage.scrollTop()
 	            }, 'slow');
 		   	},
 	        render: function() {
@@ -13817,7 +13817,7 @@
 	            ];
 	            this.info2 = [
 	                ["Spanish (mother tongue)",5],
-	                ["English",5],
+	                ["English",4],
 	            ];
 	            this.info3 = [
 	                ["Nodejs",5],
@@ -13990,12 +13990,13 @@
 	            });
 	        },
 	        toggle: function () {
-	            if($(".navigationbar").css("height") != "40px") {
-	                $(".navigationbar").stop().animate({
+	            var navigationbar = $(".navigationbar");
+	            if(navigationbar.css("height") != "40px") {
+	                navigationbar.stop().animate({
 	                    height: "40px"
 	                }, 'fast');
 	            } else {
-	                $(".navigationbar").stop().animate({
+	                navigationbar.stop().animate({
 	                    height: "60vmax"
 	                }, 'fast');
 	            }

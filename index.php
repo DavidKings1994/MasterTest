@@ -181,10 +181,10 @@ include 'php/languages/'.$lang_file;
                             <a class="twitter-share-button" href="https://twitter.com/intent/tweet"></a>
                         </div>
                         <div class="socialButton">
-                            <div class="fb-like" data-layout="button" data-show-faces="true" data-share="false"></div>
+                            <div class="fb-like" data-layout="button_count" data-href="www.davidreyes.tk" data-show-faces="true" data-share="false"></div>
                         </div>
                         <div class="socialButton">
-                            <div class="g-plusone" data-size="medium"></div>
+                            <div class="g-plusone" data-size="medium" data-href="http://www.davidreyes.tk"></div>
                         </div>
                     </div>
                 </div>

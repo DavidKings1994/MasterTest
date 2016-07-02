@@ -9,8 +9,9 @@ define(['jquery','Backbone'], function($, Backbone) {
 	   	   'click' : 'goDown',
 	   	},
 	   	goDown: function (event){
+            var mainImage = $("#mainImage");
             $('html, body').animate({
-                scrollTop: $("#mainImage").height() - $("#mainImage").scrollTop()
+                scrollTop: mainImage.height() - mainImage.scrollTop()
             }, 'slow');
 	   	},
         render: function() {

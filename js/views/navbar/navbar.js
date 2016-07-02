@@ -29,12 +29,13 @@ define(['jquery','Backbone', 'underscore'], function($, Backbone, _) {
             });
         },
         toggle: function () {
-            if($(".navigationbar").css("height") != "40px") {
-                $(".navigationbar").stop().animate({
+            var navigationbar = $(".navigationbar");
+            if(navigationbar.css("height") != "40px") {
+                navigationbar.stop().animate({
                     height: "40px"
                 }, 'fast');
             } else {
-                $(".navigationbar").stop().animate({
+                navigationbar.stop().animate({
                     height: "60vmax"
                 }, 'fast');
             }

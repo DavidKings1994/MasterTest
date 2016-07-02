@@ -24,7 +24,7 @@ define(['jquery','Backbone', './skillRow'], function($, Backbone, skillRow) {
             ];
             this.info2 = [
                 ["Spanish (mother tongue)",5],
-                ["English",5],
+                ["English",4],
             ];
             this.info3 = [
                 ["Nodejs",5],
