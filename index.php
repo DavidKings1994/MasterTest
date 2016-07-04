@@ -173,6 +173,12 @@ include 'php/languages/'.$lang_file;
                                 <span>https://twitter.com/DavidReyes1994</span>
                             </a>
                         </div>
+                        <div class="col-md-6">
+                            <a href="http://www.linkedin.com/in/davidreyes1994" target="_blank" class="socicon-button">
+                                <span class="socicon socicon-linkedin"></span>
+                                <span>www.linkedin.com/in/davidreyes1994</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="row socialShare">

@@ -22,7 +22,7 @@ div.downButton {
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     position: absolute;
-    left: 0;
+    right: 0;
     bottom: 0;
 }
 
@@ -53,8 +53,8 @@ div.downButton {
 @media only screen and (orientation: landscape) and (min-width: 1200px) {
     div.downButton {
         height: 100px;
-        width: 10%;
-        left: 85%;
+        width: 135px;
+        right: 5%;
     }
 
     div.downButton .buttonIcon {
