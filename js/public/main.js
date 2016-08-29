@@ -3,8 +3,9 @@ define([
 	"./../views/downButton/downButton",
 	"./../views/experiences/experiences",
 	"./../views/habilities/skills",
-	"./../views/navbar/navbar"
-],  function($, downButton, experiences, skills, navbar) {
+	"./../views/navbar/navbar",
+	"./../views/projectDisplay/ProjectContainer",
+],  function($, downButton, experiences, skills, navbar, ProjectContainer) {
 	$(document).ready(function() {
 		$("#mainImage").stop().delay(1000).animate({
 			opacity: 1
@@ -33,6 +34,10 @@ define([
 		$("#skillsContent").append(habilitiesContent.skills);
 		$("#languagesContent").append(habilitiesContent.languages);
 		$("#toolsContent").append(habilitiesContent.tools);
+
+		var projectsDisplay = new ProjectContainer();
+		projectsDisplay.render();
+		$(".projectsContent").append(projectsDisplay.$el);
 
 		window.twttr = (function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0],

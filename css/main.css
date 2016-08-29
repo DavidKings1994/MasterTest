@@ -131,8 +131,8 @@ p {
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
-    -webkit-filter: hue-rotate(-15deg);
-    filter: hue-rotate(-15deg);
+    -webkit-filter: hue-rotate(-15deg) saturate(60%) brightness(70%);
+    filter: hue-rotate(-15deg) saturate(60%) brightness(70%);;
 }
 
 #mainBoardFront {
@@ -186,7 +186,7 @@ p {
 }
 
 #contactContent a span:last-child {
-    margin-left: 15px;
+    margin-left: 12px;
 }
 
 #languageIcons {

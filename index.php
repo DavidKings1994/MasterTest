@@ -41,6 +41,7 @@ include 'php/languages/'.$lang_file;
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/views/downButton.css">
     <link rel="stylesheet" type="text/css" href="css/views/navbar.css">
+    <link rel="stylesheet" type="text/css" href="css/views/projectDisplay.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="img/views/logo.png" />`
 </head>
@@ -142,7 +143,7 @@ include 'php/languages/'.$lang_file;
             </div>
         </div>
         <div class="row">
-            <div id="projects" class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2 section">
+            <div id="projects" class="col-md-12 section">
                 <p class="title mainTitle"><?= $lang['SECTIONS']['SECTION_PROJECTS'] ?></p>
                 <div class="row projectsContent">
                     <div class="col-md-12">
@@ -154,6 +155,7 @@ include 'php/languages/'.$lang_file;
                         <p class="content"><?= $lang['PROJECTS_MESSAGE'] ?></p>
                     </div>
                 </div>
+                <div id="projectsContent" class="row"></div>
             </div>
         </div>
         <div class="row fullBoard darkBackground">
@@ -199,5 +201,15 @@ include 'php/languages/'.$lang_file;
     </div>
     <script type="text/javascript" src="js/dist/main.bundle.js" charset="utf-8"></script>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-81888438-2', 'auto');
+        ga('send', 'pageview');
+
+   </script>
 </body>
 </html>

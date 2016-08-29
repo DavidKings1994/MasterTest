@@ -49,8 +49,9 @@
 		__webpack_require__(2),
 		__webpack_require__(5),
 		__webpack_require__(7),
-		__webpack_require__(9)
-	], __WEBPACK_AMD_DEFINE_RESULT__ = function($, downButton, experiences, skills, navbar) {
+		__webpack_require__(9),
+		__webpack_require__(11),
+	], __WEBPACK_AMD_DEFINE_RESULT__ = function($, downButton, experiences, skills, navbar, ProjectContainer) {
 		$(document).ready(function() {
 			$("#mainImage").stop().delay(1000).animate({
 				opacity: 1
@@ -79,6 +80,10 @@
 			$("#skillsContent").append(habilitiesContent.skills);
 			$("#languagesContent").append(habilitiesContent.languages);
 			$("#toolsContent").append(habilitiesContent.tools);
+
+			var projectsDisplay = new ProjectContainer();
+			projectsDisplay.render();
+			$(".projectsContent").append(projectsDisplay.$el);
 
 			window.twttr = (function(d, s, id) {
 				var js, fjs = d.getElementsByTagName(s)[0],
@@ -14071,6 +14076,157 @@
 	        }
 	    });
 	    return navbar;
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone) {
+	    var ProjectDisplay = Backbone.View.extend({
+	        tagname: "div",
+	        className: "ProjectDisplay col-md-4 col-centered",
+	        initialize: function(parameters) {
+	            this.projectName = parameters.projectName;
+	            this.projectDescription = parameters.projectDescription;
+	            this.projectURL = parameters.projectURL;
+	            this.projectMainImage = parameters.projectMainImage;
+	            this.projectSecondaryImage = parameters.projectSecondaryImage;
+	            this.projectTags = parameters.projectTags;
+	            var self = this;
+	            $(window).bind('scroll', function (ev) {
+	                self.loadMore(ev);
+	            });
+	        },
+	        events: {
+		   	   'mouseover' : 'HandleOver',
+	           'mouseout' : 'HandleOut'
+		   	},
+	        loadMore: function () {
+	            var scroll = $('body').scrollTop() + $(window).height();
+	            $(".ProjectContainer .ProjectDisplay").each(function(i){
+	                if(scroll >= $(this).offset().top) {
+	                    var scale = Math.min(Math.max((scroll - $(this).offset().top) / $(this).outerHeight(true), 0), 1);
+	                    console.log(scale);
+	                    $(this).css('transform',"scale(" + scale + ")");
+	                    $(this).css('-webkit-transform',"scale(" + scale + ")");
+	                }
+	            });
+	        },
+		   	HandleOver: function (event){
+	            $(this.info).stop().animate({
+	                opacity: "1"
+	            }, 'slow');
+	            $(this.projectName).stop().animate({
+	                left: "5%"
+	            }, 'slow');
+	            $(this.projectDescription).stop().animate({
+	                left: "5%"
+	            }, 'slow');
+	            $(this.projectTags).stop().animate({
+	                left: "5%"
+	            }, 'slow');
+		   	},
+	        HandleOut: function(event){
+	            $(this.info).stop().animate({
+	                opacity: "0"
+	            }, 'slow');
+	            $(this.projectName).stop().animate({
+	                left: "25%"
+	            }, 'slow');
+	            $(this.projectDescription).stop().animate({
+	                left: "25%"
+	            }, 'slow');
+	            $(this.projectTags).stop().animate({
+	                left: "-15%"
+	            }, 'slow');
+	        },
+	        render: function() {
+	            var projectUrl = $("<a />", {
+	                href: this.projectURL
+	            });
+	            this.info = $("<div />", {
+	                css: {
+	                    "opacity":"0"
+	                }
+	            });
+	            var veil = $("<div />", {
+	                class: "veil"
+	            });
+	            var mainImage = $("<img />", {
+	                class: "mainImage",
+	                src: this.projectMainImage
+	            });
+	            var secondaryImage = $("<img />", {
+	                class: "secondaryImage",
+	                src: this.projectSecondaryImage
+	            });
+	            this.projectName = $("<p />", {
+	                class: "projectName",
+	                text: this.projectName
+	            });
+	            this.projectDescription = $("<p />", {
+	                class: "projectDescription",
+	                text: this.projectDescription
+	            });
+	            this.projectTags = $("<p />", {
+	                class: "projectTags",
+	                text: this.projectTags
+	            });
+	            this.info.append(secondaryImage);
+	            this.info.append(veil);
+	            this.info.append(this.projectName);
+	            this.info.append(this.projectDescription);
+	            this.info.append(this.projectTags);
+	            projectUrl.append(mainImage);
+	            projectUrl.append(this.info);
+	            this.$el.append(projectUrl);
+	        }
+	    });
+	    return ProjectDisplay;
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(4), __webpack_require__(10)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, _, ProjectDisplay) {
+	    var ProjectContainer = Backbone.View.extend({
+	        tagname: "div",
+	        className: "ProjectContainer col-md-12",
+	        initialize: function() {
+	            var self = this;
+	            $.ajax({
+	                url:"./php/languages.php",
+	                type:"POST",
+	                dataType: "text",
+	                async : false,
+	                data: {
+	                    lang: $('html').attr('lang')
+	                },
+	                success:function(msg){
+	                    self.info = _.toArray($.parseJSON(msg)['PROJECTS_CONTENT']);
+	                }
+	            });
+	        },
+		   	render: function() {
+	            for (var i = 0; i < _.size(this.info); i++) {
+	                var row = new ProjectDisplay({
+	                    projectName: this.info[i]['NAME'],
+	                    projectDescription: this.info[i]['DESCRIPTION'],
+	                    projectTags: this.info[i]['TAGS'],
+	                    projectURL: this.info[i]['URL'],
+	                    projectMainImage: this.info[i]['MAIN_IMAGE'],
+	                    projectSecondaryImage: this.info[i]['SECUNDARY_IMAGE']
+	                });
+	                row.render();
+	                this.$el.append(row.$el);
+	            }
+	        }
+	    });
+	    return ProjectContainer;
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
 
 

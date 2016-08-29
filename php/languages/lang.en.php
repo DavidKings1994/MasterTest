@@ -58,4 +58,12 @@ $lang['ABILITIES_LANGUAGES'] = 'Languages';
 $lang['ABILITIES_TOOLS'] = 'Tools';
 
 $lang['PROJECTS_MESSAGE'] = "more projects in the futue!";
+$lang['PROJECTS_CONTENT'] = array();
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA'] = array();
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA']['NAME'] = 'Interactive Multimedia';
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA']['DESCRIPTION'] = 'Simple infinite runner game with facebook connection as a project for college';
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA']['TAGS'] = 'Three.js, Cannon.js, WebGL';
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA']['URL'] = 'http://multimediainteractiva.ga';
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA']['MAIN_IMAGE'] = './img/views/Loading.png';
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA']['SECUNDARY_IMAGE'] = './img/views/Gameplay.png';
 ?>

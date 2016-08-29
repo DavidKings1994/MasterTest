@@ -1,0 +1,65 @@
+.ProjectContainer {
+    font-family: opensans-semibold;
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.ProjectContainer .ProjectDisplay {
+    overflow: hidden;
+    margin-top: 30px;
+}
+
+.ProjectContainer .ProjectDisplay .veil {
+    height: 100%;
+    width: 94%;
+    background: rgba(118, 186, 174, 0.7);
+    position: absolute;
+    top: 0;
+    left: 3%;
+}
+
+.ProjectContainer .ProjectDisplay .mainImage {
+    width: 100%;
+    height: auto;
+    z-index: -1;
+}
+
+.ProjectContainer .ProjectDisplay .secondaryImage {
+    width: 100%;
+    padding-right: 3%;
+    padding-left: 3%;
+    height: auto;
+    z-index: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ProjectContainer .ProjectDisplay .projectName {
+    position: absolute;
+    top: 5%;
+    left: 25%;
+    height: 25px;
+    overflow: hidden;
+}
+
+.ProjectContainer .ProjectDisplay .projectDescription {
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    font-family: OpenSans-Light;
+    width: 90%;
+    text-align: left;
+    height: 75px;
+    overflow: hidden;
+}
+
+.ProjectContainer .ProjectDisplay .projectTags {
+    position: absolute;
+    bottom: 3%;
+    left: -15%;
+    height: 25px;
+    overflow: hidden;
+    width: 90%;
+    text-align: left;
+}

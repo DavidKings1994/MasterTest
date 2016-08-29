@@ -58,5 +58,12 @@ $lang['ABILITIES_LANGUAGES'] = 'Idiomas';
 $lang['ABILITIES_TOOLS'] = 'Herramientas';
 
 $lang['PROJECTS_MESSAGE'] = "mas proyectos en el futuro!";
-
+$lang['PROJECTS_CONTENT'] = array();
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA'] = array();
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA']['NAME'] = 'Multimedia Interactiva';
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA']['DESCRIPTION'] = 'Un juego simple de infinite runner para un proyeto de la facultad';
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA']['TAGS'] = 'Three.js, Cannon.js, WebGL';
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA']['URL'] = 'http://multimediainteractiva.ga';
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA']['MAIN_IMAGE'] = './img/views/Loading.png';
+$lang['PROJECTS_CONTENT']['MULTIMEDIA_INTERACTIVA']['SECUNDARY_IMAGE'] = './img/views/Gameplay.png';
 ?>
