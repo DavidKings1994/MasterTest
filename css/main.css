@@ -11,6 +11,10 @@ p {
     margin: 0 !important;
 }
 
+textarea {
+    resize: none;
+}
+
 .whiteBackground {
     background: white;
 }
@@ -112,7 +116,7 @@ p {
 }
 
 #contactContent {
-    padding-bottom: 70px;
+    padding-bottom: 40px;
     border-bottom-style: solid;
     border-bottom-color: rgb(80,80,80);
     border-bottom-width: 1px;
@@ -178,6 +182,7 @@ p {
     width: 32%;
     text-align: center;
     display: inline-block;
+    vertical-align: top;
 }
 
 #contactContent .socicon {
@@ -230,6 +235,46 @@ p {
 
 .projectsContent p {
     text-align: center;
+}
+
+#contact span, #contact h2 {
+    color: rgb(140,140,140);
+}
+
+#contact table {
+    margin-bottom: 5px;
+}
+
+#contact form {
+    margin-bottom: 0px;
+}
+
+#contact textarea, #contact input, #contact span{
+    margin-bottom: 8px;
+}
+
+#contact form textarea, #contact form input {
+    padding: 3px 5px;
+    border-radius: 5px;
+}
+
+#contact form input:last-child {
+    width: 100%;
+    font-family: opensans-semibold;
+}
+
+input, textarea, select {
+    -webkit-transition: all 0.30s ease-in-out;
+    -moz-transition: all 0.30s ease-in-out;
+    -ms-transition: all 0.30s ease-in-out;
+    -o-transition: all 0.30s ease-in-out;
+    outline: none;
+    border: 1px solid rgb(150,150,150);
+}
+
+.needToFill {
+    box-shadow: 0 0 5px #b50a0a;
+    border: 1px solid #b50a0a;
 }
 
 @media only screen and (orientation: portrait) {

@@ -23,7 +23,6 @@ define(['jquery','Backbone'], function($, Backbone) {
             $(".ProjectContainer .ProjectDisplay").each(function(i){
                 if(scroll >= $(this).offset().top) {
                     var scale = Math.min(Math.max((scroll - $(this).offset().top) / $(this).outerHeight(true), 0), 1);
-                    console.log(scale);
                     $(this).css('transform',"scale(" + scale + ")");
                     $(this).css('-webkit-transform',"scale(" + scale + ")");
                 }

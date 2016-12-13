@@ -50,7 +50,7 @@
 		__webpack_require__(5),
 		__webpack_require__(7),
 		__webpack_require__(9),
-		__webpack_require__(11),
+		__webpack_require__(10),
 	], __WEBPACK_AMD_DEFINE_RESULT__ = function($, downButton, experiences, skills, navbar, ProjectContainer) {
 		$(document).ready(function() {
 			$("#mainImage").stop().delay(1000).animate({
@@ -84,6 +84,41 @@
 			var projectsDisplay = new ProjectContainer();
 			projectsDisplay.render();
 			$(".projectsContent").append(projectsDisplay.$el);
+
+			$('#contact input[type="button"]').click(function(){
+				var ready = true;
+				if($('#contact input[name="name"]').val().trim() == ''){
+					$('#contact input[name="name"]').addClass('needToFill');
+					ready = false;
+				}
+				if($('#contact input[name="mail"]').val().trim() == ''){
+					$('#contact input[name="mail"]').addClass('needToFill');
+					ready = false;
+				}
+				if($('#contact textarea[name="message"]').val().trim() == ''){
+					$('#contact textarea[name="message"]').addClass('needToFill');
+					ready = false;
+				}
+				if(ready) {
+					$.ajax({
+		                url: "./php/mail.php",
+		                type: "POST",
+		                dataType: "text",
+		                data: $('#contact form').serialize(),
+		                success: function(msg) {
+							if (msg != 'error') {
+								$('#contact input[name="name"]').val('');
+								$('#contact input[name="mail"]').val('');
+								$('#contact textarea[name="message"]').val('');
+								$('#contact input[name="name"]').removeClass('needToFill');
+								$('#contact input[name="mail"]').removeClass('needToFill');
+								$('#contact textarea[name="message"]').removeClass('needToFill');
+							}
+							alert(msg);
+		                }
+		            });
+				}
+			});
 
 			window.twttr = (function(d, s, id) {
 				var js, fjs = d.getElementsByTagName(s)[0],
@@ -14083,6 +14118,48 @@
 /* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(4), __webpack_require__(11)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, _, ProjectDisplay) {
+	    var ProjectContainer = Backbone.View.extend({
+	        tagname: "div",
+	        className: "ProjectContainer col-md-12",
+	        initialize: function() {
+	            var self = this;
+	            $.ajax({
+	                url:"./php/languages.php",
+	                type:"POST",
+	                dataType: "text",
+	                async : false,
+	                data: {
+	                    lang: $('html').attr('lang')
+	                },
+	                success:function(msg){
+	                    self.info = _.toArray($.parseJSON(msg)['PROJECTS_CONTENT']);
+	                }
+	            });
+	        },
+		   	render: function() {
+	            for (var i = 0; i < _.size(this.info); i++) {
+	                var row = new ProjectDisplay({
+	                    projectName: this.info[i]['NAME'],
+	                    projectDescription: this.info[i]['DESCRIPTION'],
+	                    projectTags: this.info[i]['TAGS'],
+	                    projectURL: this.info[i]['URL'],
+	                    projectMainImage: this.info[i]['MAIN_IMAGE'],
+	                    projectSecondaryImage: this.info[i]['SECUNDARY_IMAGE']
+	                });
+	                row.render();
+	                this.$el.append(row.$el);
+	            }
+	        }
+	    });
+	    return ProjectContainer;
+	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
+
+
+/***/ },
+/* 11 */
+/***/ function(module, exports, __webpack_require__) {
+
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone) {
 	    var ProjectDisplay = Backbone.View.extend({
 	        tagname: "div",
@@ -14108,7 +14185,6 @@
 	            $(".ProjectContainer .ProjectDisplay").each(function(i){
 	                if(scroll >= $(this).offset().top) {
 	                    var scale = Math.min(Math.max((scroll - $(this).offset().top) / $(this).outerHeight(true), 0), 1);
-	                    console.log(scale);
 	                    $(this).css('transform',"scale(" + scale + ")");
 	                    $(this).css('-webkit-transform',"scale(" + scale + ")");
 	                }
@@ -14185,48 +14261,6 @@
 	        }
 	    });
 	    return ProjectDisplay;
-	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
-
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1),__webpack_require__(3), __webpack_require__(4), __webpack_require__(10)], __WEBPACK_AMD_DEFINE_RESULT__ = function($, Backbone, _, ProjectDisplay) {
-	    var ProjectContainer = Backbone.View.extend({
-	        tagname: "div",
-	        className: "ProjectContainer col-md-12",
-	        initialize: function() {
-	            var self = this;
-	            $.ajax({
-	                url:"./php/languages.php",
-	                type:"POST",
-	                dataType: "text",
-	                async : false,
-	                data: {
-	                    lang: $('html').attr('lang')
-	                },
-	                success:function(msg){
-	                    self.info = _.toArray($.parseJSON(msg)['PROJECTS_CONTENT']);
-	                }
-	            });
-	        },
-		   	render: function() {
-	            for (var i = 0; i < _.size(this.info); i++) {
-	                var row = new ProjectDisplay({
-	                    projectName: this.info[i]['NAME'],
-	                    projectDescription: this.info[i]['DESCRIPTION'],
-	                    projectTags: this.info[i]['TAGS'],
-	                    projectURL: this.info[i]['URL'],
-	                    projectMainImage: this.info[i]['MAIN_IMAGE'],
-	                    projectSecondaryImage: this.info[i]['SECUNDARY_IMAGE']
-	                });
-	                row.render();
-	                this.$el.append(row.$el);
-	            }
-	        }
-	    });
-	    return ProjectContainer;
 	}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))
 
 

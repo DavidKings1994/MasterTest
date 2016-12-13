@@ -39,6 +39,41 @@ define([
 		projectsDisplay.render();
 		$(".projectsContent").append(projectsDisplay.$el);
 
+		$('#contact input[type="button"]').click(function(){
+			var ready = true;
+			if($('#contact input[name="name"]').val().trim() == ''){
+				$('#contact input[name="name"]').addClass('needToFill');
+				ready = false;
+			}
+			if($('#contact input[name="mail"]').val().trim() == ''){
+				$('#contact input[name="mail"]').addClass('needToFill');
+				ready = false;
+			}
+			if($('#contact textarea[name="message"]').val().trim() == ''){
+				$('#contact textarea[name="message"]').addClass('needToFill');
+				ready = false;
+			}
+			if(ready) {
+				$.ajax({
+	                url: "./php/mail.php",
+	                type: "POST",
+	                dataType: "text",
+	                data: $('#contact form').serialize(),
+	                success: function(msg) {
+						if (msg != 'error') {
+							$('#contact input[name="name"]').val('');
+							$('#contact input[name="mail"]').val('');
+							$('#contact textarea[name="message"]').val('');
+							$('#contact input[name="name"]').removeClass('needToFill');
+							$('#contact input[name="mail"]').removeClass('needToFill');
+							$('#contact textarea[name="message"]').removeClass('needToFill');
+						}
+						alert(msg);
+	                }
+	            });
+			}
+		});
+
 		window.twttr = (function(d, s, id) {
 			var js, fjs = d.getElementsByTagName(s)[0],
 			t = window.twttr || {};

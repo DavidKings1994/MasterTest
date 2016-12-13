@@ -160,14 +160,20 @@ include 'php/languages/'.$lang_file;
         </div>
         <div class="row fullBoard darkBackground">
             <div id="contact" class="col-md-8 col-md-offset-2 section">
-                <p class="title mainTitle"><?= $lang['SECTIONS']['SECTION_CONTACT'] ?></p>
+                <p style="margin-bottom: 40px !important;" class="title mainTitle"><?= $lang['SECTIONS']['SECTION_CONTACT'] ?></p>
                 <div id="contactContent">
                     <div class="row">
+                        <h2 class="col-md-12"><?= $lang['CONTACT_TITLE'] ?></h6>
                         <div class="col-md-6">
-                            <a href="mailto:contact@davidreyes.tk" target="_top" class="socicon-button">
-                                <span class="socicon socicon-mail"></span>
-                                <span>contact@davidreyes.tk</span>
-                            </a>
+                            <form class="col-md-12" action="php/mail.php" method="post">
+                                <span class="col-md-4 col-xs-12 col-sm-12"><?= $lang['CONTACT_NAME'] ?></span></td>
+                                <input class="col-md-8 col-xs-12 col-sm-12" type="text" name="name"></td>
+                                <span class="col-md-4 col-xs-12 col-sm-12"><?= $lang['CONTACT_MAIL'] ?></span></td>
+                                <input class="col-md-8 col-xs-12 col-sm-12" type="email" name="mail"></td>
+                                <span class="col-md-4 col-xs-12 col-sm-12"><?= $lang['CONTACT_MESSAGE'] ?></span></td>
+                                <textarea class="col-md-8 col-xs-12 col-sm-12 col-sm-12" rows="4" name="message"></textarea></td>
+                                <input type="button" name="send" value="<?= $lang['CONTACT_SEND'] ?>">
+                            </form>
                         </div>
                         <div class="col-md-6">
                             <a href="https://twitter.com/DavidReyes1994" target="_blank" class="socicon-button">
