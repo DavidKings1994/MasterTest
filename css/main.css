@@ -111,10 +111,6 @@ textarea {
     font-size: 18px;
 }
 
-#contact a:hover {
-    color: white;
-}
-
 #contactContent {
     padding-bottom: 40px;
     border-bottom-style: solid;
@@ -179,7 +175,7 @@ textarea {
 }
 
 .socialButton {
-    width: 32%;
+    margin: 0 5px;
     text-align: center;
     display: inline-block;
     vertical-align: top;
@@ -259,7 +255,6 @@ textarea {
 }
 
 #contact form input:last-child {
-    width: 100%;
     font-family: opensans-semibold;
 }
 
@@ -437,4 +432,8 @@ input, textarea, select {
         position: inherit;
         font-size: 16px;
     }
+}
+
+#contact a:hover {
+    color: white !important;
 }

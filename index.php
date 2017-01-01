@@ -71,7 +71,7 @@ include 'php/languages/'.$lang_file;
                         <p class="content"><?= $lang['PROFILE_ABOUT_CONTENT'] ?></p>
                     </div>
                     <div class="col-md-4">
-                        <img src="./img/views/me.jpg" class="profileImage">
+                        <img src="./img/views/me2.jpg" class="profileImage">
                     </div>
                     <div id="details" class="col-md-4">
                         <p class="subtitle"><?= $lang['PROFILE_DETAILS'] ?></p>
@@ -163,43 +163,43 @@ include 'php/languages/'.$lang_file;
                 <p style="margin-bottom: 40px !important;" class="title mainTitle"><?= $lang['SECTIONS']['SECTION_CONTACT'] ?></p>
                 <div id="contactContent">
                     <div class="row">
-                        <h2 class="col-md-12"><?= $lang['CONTACT_TITLE'] ?></h6>
-                        <div class="col-md-6">
+                        <h2 class="col-md-12" style="text-align: center; margin-bottom: 30px;"><?= $lang['CONTACT_TITLE'] ?></h6>
+                        <div class="col-md-8">
                             <form class="col-md-12" action="php/mail.php" method="post">
-                                <span class="col-md-4 col-xs-12 col-sm-12"><?= $lang['CONTACT_NAME'] ?></span></td>
-                                <input class="col-md-8 col-xs-12 col-sm-12" type="text" name="name"></td>
-                                <span class="col-md-4 col-xs-12 col-sm-12"><?= $lang['CONTACT_MAIL'] ?></span></td>
-                                <input class="col-md-8 col-xs-12 col-sm-12" type="email" name="mail"></td>
-                                <span class="col-md-4 col-xs-12 col-sm-12"><?= $lang['CONTACT_MESSAGE'] ?></span></td>
-                                <textarea class="col-md-8 col-xs-12 col-sm-12 col-sm-12" rows="4" name="message"></textarea></td>
-                                <input type="button" name="send" value="<?= $lang['CONTACT_SEND'] ?>">
+                                <span class="col-md-2 col-sm-12 col-xs-12"><?= $lang['CONTACT_NAME'] ?></span>
+                                <input class="col-md-8 col-sm-12 col-xs-12" type="text" name="name">
+                                <span class="col-md-2 col-sm-12 col-xs-12" style="clear: left;"><?= $lang['CONTACT_MAIL'] ?></span>
+                                <input class="col-md-8 col-sm-12 col-xs-12" type="email" name="mail">
+                                <span class="col-md-2 col-sm-12 col-xs-12" style="clear: left;"><?= $lang['CONTACT_MESSAGE'] ?></span>
+                                <textarea class="col-md-8 col-sm-12 col-xs-12" rows="4" name="message"></textarea>
+                                <input type="button" name="send" class="col-md-2 col-md-offset-8 col-sm-12 col-xs-12" value="<?= $lang['CONTACT_SEND'] ?>">
                             </form>
                         </div>
-                        <div class="col-md-6">
-                            <a href="https://twitter.com/DavidReyes1994" target="_blank" class="socicon-button">
+                        <div class="col-md-4  col-xs-6" style="margin-top: 20px;">
+                            <a href="https://twitter.com/_DavidReyesG" target="_blank" class="socicon-button">
                                 <span class="socicon socicon-twitter"></span>
-                                <span>https://twitter.com/DavidReyes1994</span>
+                                <span>Twitter</span>
                             </a>
                         </div>
-                        <div class="col-md-6">
-                            <a href="http://www.linkedin.com/in/davidreyes1994" target="_blank" class="socicon-button">
+                        <div class="col-md-4 col-xs-6" style="margin-top: 20px;">
+                            <a href="http://www.linkedin.com/in/DavidReyesG" target="_blank" class="socicon-button">
                                 <span class="socicon socicon-linkedin"></span>
-                                <span>www.linkedin.com/in/davidreyes1994</span>
+                                <span>LinkedIn</span>
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="row socialShare">
-                    <div class="col-md-6 col-md-offset-3">
+                    <div class="col-md-6 col-md-offset-3" style="text-align: center;">
                         <div class="socialButton">
-                            <a class="twitter-share-button" href="https://twitter.com/intent/tweet"></a>
+                            <a class="twitter-follow-button" href="https://twitter.com/_DavidReyesG" data-show-screen-name="false" data-show-count="false"></a>
                         </div>
                         <div class="socialButton">
                             <div class="fb-like" data-layout="button_count" data-href="www.davidreyes.tk" data-show-faces="true" data-share="false"></div>
                         </div>
-                        <div class="socialButton">
+                        <!-- <div class="socialButton">
                             <div class="g-plusone" data-size="medium" data-href="http://www.davidreyes.tk"></div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
